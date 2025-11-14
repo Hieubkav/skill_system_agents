@@ -6,16 +6,17 @@ description: |
   Keywords: Next.js 16, Next.js App Router, Next.js Pages Router, Server Components, React Server Components, Server Actions, Cache Components, use cache, Next.js 16 breaking changes, async params nextjs, proxy.ts migration, React 19.2, Next.js metadata, Next.js SEO, generateMetadata, static generation, dynamic rendering, streaming SSR, Suspense, parallel routes, intercepting routes, route groups, Next.js middleware, Next.js API routes, Route Handlers, revalidatePath, revalidateTag, next/navigation, useSearchParams, turbopack, next.config
 license: MIT
 metadata:
-  version: 1.0.0
-  last_verified: 2025-10-24
+  version: 1.1.0
+  last_verified: 2025-11-14
   nextjs_version: 16.0.0
   react_version: 19.2.0
   node_version: 20.9+
   author: Jezweb
   repository: https://github.com/jezweb/claude-skills
   production_tested: true
-  token_savings: 65-70%
+  token_savings: 70-75%
   errors_prevented: 18+
+  enhanced_with: "Production best practices, security patterns, Core Web Vitals optimization"
 allowed-tools: ["Read", "Write", "Edit", "Bash", "Glob", "Grep"]
 ---
 
@@ -24,7 +25,8 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "Glob", "Grep"]
 **Version**: Next.js 16.0.0
 **React Version**: 19.2.0
 **Node.js**: 20.9+
-**Last Verified**: 2025-10-24
+**Last Verified**: 2025-11-14
+**Enhanced**: Production best practices, security patterns, Core Web Vitals
 
 ---
 
@@ -44,9 +46,14 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "Glob", "Grep"]
 12. [Image & Font Optimization](#image--font-optimization)
 13. [Performance Patterns](#performance-patterns)
 14. [TypeScript Configuration](#typescript-configuration)
-15. [Common Errors & Solutions](#common-errors--solutions)
-16. [Templates Reference](#templates-reference)
-17. [Additional Resources](#additional-resources)
+15. [Data Fetching Best Practices](#data-fetching-best-practices)
+16. [Component Composition Patterns](#component-composition-patterns)
+17. [Security Best Practices](#security-best-practices)
+18. [Core Web Vitals Optimization](#core-web-vitals-optimization)
+19. [Production Deployment Checklist](#production-deployment-checklist)
+20. [Common Errors & Solutions](#common-errors--solutions)
+21. [Templates Reference](#templates-reference)
+22. [Additional Resources](#additional-resources)
 
 ---
 
@@ -1868,6 +1875,328 @@ router.push('/invalid')   // ❌ Type error if route doesn't exist
 
 ---
 
+## Data Fetching Best Practices
+
+**Full Guide**: See `references/data-fetching-patterns.md`
+
+### Key Patterns
+
+**1. Server-Side Data Fetching (Recommended)**
+```typescript
+// Fetch directly in Server Component
+export default async function PostsPage() {
+  const posts = await fetch('https://api.example.com/posts').then(r => r.json())
+  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>
+}
+```
+
+**2. Parallel vs Sequential Fetching**
+```typescript
+// ✅ Parallel (fast)
+const [user, posts] = await Promise.all([
+  fetch('/api/user').then(r => r.json()),
+  fetch('/api/posts').then(r => r.json()),
+])
+
+// ❌ Sequential (slow - only use when necessary)
+const user = await fetch('/api/user').then(r => r.json())
+const posts = await fetch(`/api/posts?userId=${user.id}`).then(r => r.json())
+```
+
+**3. Request Deduplication (Automatic)**
+```typescript
+// Multiple components fetch same data = only 1 request
+async function UserProfile() {
+  const user = await fetch('/api/user').then(r => r.json()) // Request 1
+  return <div>{user.name}</div>
+}
+
+async function UserSettings() {
+  const user = await fetch('/api/user').then(r => r.json()) // Cached (deduplicated)
+  return <div>{user.email}</div>
+}
+```
+
+**4. Streaming with Suspense**
+```typescript
+import { Suspense } from 'react'
+
+export default function Page() {
+  return (
+    <div>
+      <Suspense fallback={<Skeleton />}>
+        <SlowComponent /> {/* Streams when ready */}
+      </Suspense>
+    </div>
+  )
+}
+```
+
+**See Full Guide**: `references/data-fetching-patterns.md` for error handling, loading states, and TanStack Query patterns.
+
+---
+
+## Component Composition Patterns
+
+**Full Guide**: See `references/composition-patterns.md`
+
+### Composition Rules
+
+| Rule | Allowed? | Pattern |
+|------|----------|---------|
+| Server → Client | ✅ Yes | `import ClientComponent` |
+| Client → Client | ✅ Yes | `import ClientComponent` |
+| Client → Server (direct) | ❌ No | Import fails |
+| Client → Server (children) | ✅ Yes | `<Client>{<Server />}</Client>` |
+
+### Key Patterns
+
+**1. Pass Server Component as Children**
+```typescript
+// ✅ CORRECT
+'use client'
+export function ClientWrapper({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>
+}
+
+// Usage
+<ClientWrapper>
+  <ServerComponent /> {/* Passed as children */}
+</ClientWrapper>
+```
+
+**2. Component-Level Data Fetching (Preferred)**
+```typescript
+// Fetch in component that needs it
+async function UserProfile() {
+  const user = await fetch('/api/user').then(r => r.json())
+  return <div>{user.name}</div>
+}
+```
+
+**3. Context for Client-Side State**
+```typescript
+'use client'
+const ThemeContext = createContext(null)
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState('light')
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
+}
+```
+
+**See Full Guide**: `references/composition-patterns.md` for React `cache()`, slots pattern, and anti-patterns.
+
+---
+
+## Security Best Practices
+
+**Full Guide**: See `references/security-best-practices.md`
+
+### Data Access Layer (DAL) - Recommended
+
+**Centralized authorization and data access**:
+
+```typescript
+// lib/dal.ts
+'use server'
+import 'server-only'
+import { verifySession } from './session'
+
+export async function getUser() {
+  const session = await verifySession()
+  if (!session) throw new Error('Unauthorized')
+
+  return db.user.findUnique({
+    where: { id: session.userId },
+    select: { id: true, name: true, email: true }, // Only safe fields
+  })
+}
+
+export async function getAdminUsers() {
+  const session = await verifySession()
+  if (session.role !== 'admin') throw new Error('Forbidden')
+
+  return db.user.findMany({ select: { id: true, name: true, email: true } })
+}
+```
+
+### Key Security Patterns
+
+**1. Input Validation**
+```typescript
+import { z } from 'zod'
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+export async function createUser(formData: FormData) {
+  const result = schema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password'),
+  })
+  if (!result.success) return { errors: result.error.flatten().fieldErrors }
+  // Create user
+}
+```
+
+**2. SQL Injection Prevention**
+```typescript
+// ✅ Use ORM (Prisma)
+const user = await db.user.findUnique({ where: { id: userId } })
+
+// ❌ Never concatenate SQL
+const user = await db.$queryRaw`SELECT * FROM users WHERE id = ${userId}` // Vulnerable
+```
+
+**3. XSS Prevention**
+```typescript
+// ✅ React escapes by default (safe)
+const comment = '<script>alert("XSS")</script>'
+return <div>{comment}</div> // Renders as text
+
+// ❌ Avoid dangerouslySetInnerHTML
+return <div dangerouslySetInnerHTML={{ __html: comment }} /> // Dangerous
+
+// ✅ Sanitize if needed
+import DOMPurify from 'isomorphic-dompurify'
+const sanitized = DOMPurify.sanitize(comment)
+return <div dangerouslySetInnerHTML={{ __html: sanitized }} />
+```
+
+**See Full Guide**: `references/security-best-practices.md` for authentication, authorization, CSRF protection, and security headers.
+
+---
+
+## Core Web Vitals Optimization
+
+**Full Guide**: See `references/core-web-vitals.md`
+
+### Core Web Vitals Targets
+
+| Metric | Target | Measures |
+|--------|--------|----------|
+| **LCP** | ≤ 2.5s | Loading performance |
+| **INP** | ≤ 200ms | Interactivity |
+| **CLS** | ≤ 0.1 | Visual stability |
+
+### LCP Optimization (< 2.5s)
+
+**1. Optimize Hero Images**
+```typescript
+<Image
+  src="/hero.jpg"
+  alt="Hero"
+  width={1200}
+  height={600}
+  priority // ✅ Preload LCP image
+  quality={75}
+/>
+```
+
+**2. Use Server Components for Above-the-Fold**
+```typescript
+// ✅ Server Component renders immediately
+export default async function Page() {
+  const hero = await fetch('/api/hero').then(r => r.json())
+  return <h1>{hero.title}</h1>
+}
+```
+
+### INP Optimization (< 200ms)
+
+**1. Minimize Client JS**
+```typescript
+// ✅ Use Server Components by default
+export default async function PostsList() {
+  const posts = await fetch('/api/posts').then(r => r.json())
+  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>
+}
+```
+
+**2. Code Splitting**
+```typescript
+import dynamic from 'next/dynamic'
+
+const Chart = dynamic(() => import('./chart'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>,
+})
+```
+
+### CLS Optimization (< 0.1)
+
+**1. Set Image Dimensions**
+```typescript
+// ✅ Always set width/height
+<Image src="/hero.jpg" alt="Hero" width={1200} height={600} />
+```
+
+**2. Reserve Space for Dynamic Content**
+```typescript
+<Suspense fallback={<Skeleton />}>
+  <DynamicContent />
+</Suspense>
+
+function Skeleton() {
+  return <div className="h-40 bg-gray-200 animate-pulse" />
+}
+```
+
+**See Full Guide**: `references/core-web-vitals.md` for font optimization, measurement tools, and quick wins.
+
+---
+
+## Production Deployment Checklist
+
+**Full Guide**: See `references/production-checklist.md`
+
+### Pre-Deployment Essentials
+
+**Code Quality**:
+- [ ] TypeScript errors fixed (`npx tsc --noEmit`)
+- [ ] Linting passes (`npx eslint .`)
+- [ ] Tests passing (`npm test`)
+- [ ] No `console.log` in production code
+
+**Security**:
+- [ ] Authentication implemented
+- [ ] Authorization checks in Server Components
+- [ ] Input validation with Zod
+- [ ] Security headers configured
+- [ ] No secrets in code (`grep -r "API_KEY" app/`)
+
+**Performance**:
+- [ ] Images optimized with `next/image`
+- [ ] Fonts optimized with `next/font`
+- [ ] Bundle analyzed (`ANALYZE=true npm run build`)
+- [ ] Core Web Vitals passing (LCP < 2.5s, INP < 200ms, CLS < 0.1)
+- [ ] Cache configured (`"use cache"` or ISR)
+
+**SEO**:
+- [ ] Metadata configured (title, description, OG, Twitter)
+- [ ] Sitemap generated (`app/sitemap.ts`)
+- [ ] robots.txt configured (`app/robots.ts`)
+- [ ] Structured data added (JSON-LD)
+
+**Monitoring**:
+- [ ] Error tracking configured (Sentry)
+- [ ] Analytics configured (Vercel Analytics)
+- [ ] Performance monitoring (`@vercel/speed-insights`)
+
+**Deployment**:
+- [ ] Production build succeeds (`npm run build`)
+- [ ] Environment variables set
+- [ ] Database migrations run
+- [ ] Health check endpoint created (`/api/health`)
+- [ ] Rollback plan documented
+
+**See Full Checklist**: `references/production-checklist.md` for detailed steps and post-deployment verification.
+
+---
+
 ## Common Errors & Solutions
 
 ### 1. Error: `params` is a Promise
@@ -2326,18 +2655,17 @@ The following templates are available in `templates/`:
 ## Additional Resources
 
 **Bundled References** (in `references/`):
+
+**Migration & Breaking Changes**:
 - `next-16-migration-guide.md` - Complete migration from Next.js 15 to 16
-- `cache-components-guide.md` - Cache Components deep dive
-- `proxy-vs-middleware.md` - Proxy.ts vs middleware.ts comparison
-- `async-route-params.md` - Async params, searchParams, cookies(), headers()
-- `app-router-fundamentals.md` - App Router concepts and patterns
-- `server-components-patterns.md` - Server Components best practices
-- `server-actions-guide.md` - Server Actions patterns and validation
-- `route-handlers-reference.md` - Route Handlers API reference
-- `metadata-api-guide.md` - Metadata API complete guide
-- `performance-optimization.md` - Performance patterns and Turbopack
-- `react-19-integration.md` - React 19.2 features in Next.js
 - `top-errors.md` - 18+ common errors and solutions
+
+**Best Practices (NEW - 2025-11-14)**:
+- `data-fetching-patterns.md` - Server-side fetching, parallel/sequential patterns, streaming, deduplication
+- `composition-patterns.md` - Server/Client component composition, Context API, children prop pattern
+- `security-best-practices.md` - Data Access Layer (DAL), authentication, input validation, common vulnerabilities
+- `core-web-vitals.md` - LCP, INP, CLS optimization strategies and measurement tools
+- `production-checklist.md` - Comprehensive pre-deployment, deployment, and post-deployment checklist
 
 **Scripts**:
 - `scripts/check-versions.sh` - Verify Next.js and dependency versions

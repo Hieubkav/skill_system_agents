@@ -18,7 +18,7 @@ Checklist đầy đủ để validate một Agent Skill trước khi hoàn thàn
 - [ ] Mỗi reference file tập trung vào 1 tính năng
 - [ ] Reference files ≤ 300 dòng
 - [ ] Reference files > 100 dòng có TOC (Table of Contents)
-- [ ] README.md < 100 ký tự
+- [ ] README.md < 100 ký tự và là tiếng việt 
 
 ---
 
