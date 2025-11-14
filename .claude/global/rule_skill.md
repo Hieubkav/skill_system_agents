@@ -2,8 +2,7 @@
 
 ### Triết lý 4 tầng tiết lộ tiến bộ
 Tránh AI AGENT đọc hết, tiết kiệm context, tăng độ chính xác.
-
-- **Tầng 0** (luôn tải): README.md nhóm - tổng quan, danh sách skill
+- **Tầng 0** (luôn tải): README.md nhóm - tổng quan, danh sách skill,để chọn skill
 - **Tầng 1** (luôn tải): README.md skill - metadata, thông tin cơ bản cần thiết
 - **Tầng 2** (khi chọn skill): SKILL.md - tổng quan, quickstart, bảng tham chiếu reference.md (chỉ tên + mô tả ngắn + khi nào gọi)
 - **Tầng 3** (khi cần): reference.md - chi tiết, ví dụ, code mẫu, trường hợp sử dụng cụ thể
