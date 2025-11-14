@@ -1,10 +1,11 @@
 # Skill Creation Workflow
 
-Quy trình 11 bước chi tiết để tạo một Agent Skill hoàn chỉnh.
+Quy trình 12 bước chi tiết để tạo một Agent Skill hoàn chỉnh (bao gồm duplicate detection).
 
 ## Table of Contents
 
 - [Step 1: Xác định phạm vi Skill](#step-1-xác-định-phạm-vi-skill)
+- [Step 1.5: Check Duplicate Skills (NEW!)](#step-15-check-duplicate-skills-new)
 - [Step 2: Chọn Skill location](#step-2-chọn-skill-location)
 - [Step 3: Tạo cấu trúc Skill](#step-3-tạo-cấu-trúc-skill)
 - [Step 4: Viết SKILL.md frontmatter](#step-4-viết-skillmd-frontmatter)
@@ -35,6 +36,183 @@ Quy trình 11 bước chi tiết để tạo một Agent Skill hoàn chỉnh.
 - Easier to maintain and update
 - Better user experience
 - Clear ownership and responsibility
+
+---
+
+## Step 1.5: Check Duplicate Skills (NEW!)
+
+### Overview
+
+**QUAN TRỌNG**: Trước khi tạo skill mới, phải check xem đã có skill tương tự chưa. Điều này giúp:
+- **Tránh duplicate** - Không tạo skills trùng lặp
+- **Tối ưu hóa** - Gộp/cải tiến skills hiện có thay vì tạo mới
+- **Dễ quản lý** - Giữ skill system gọn gàng, không spam
+- **Hiệu quả hơn** - Một skill tốt > nhiều skills yếu
+
+### Step-by-Step Process
+
+**1. Read active_skill.md**
+
+```bash
+Read E:\Laravel\study\skill_system\.claude\hook\choose_skill.md\active_skill.md
+```
+
+Parse tất cả existing skills:
+- Skill names
+- Descriptions
+- Trigger words
+- Groups/domains
+
+**2. Compare với skill mới**
+
+So sánh 4 tiêu chí:
+
+| Tiêu chí | Weight | Method |
+|----------|--------|--------|
+| **Name Similarity** | 30% | Levenshtein distance, keyword overlap |
+| **Description Keywords** | 40% | Extract keywords, count overlap |
+| **Trigger Words** | 20% | Count overlapping triggers |
+| **Domain/Category** | 10% | Same group, similar operations |
+
+**3. Calculate Similarity Score**
+
+```
+Total Score = (Name × 0.3) + (Description × 0.4) + (Triggers × 0.2) + (Domain × 0.1)
+```
+
+**4. Classify Similarity Level**
+
+| Score | Level | Action Required |
+|-------|-------|----------------|
+| **≥70%** | **HIGH** | ⚠️ Strong warning, must decide |
+| **40-69%** | **MEDIUM** | ⚠️ Warning, suggest review |
+| **<40%** | **LOW** | ✅ OK to proceed |
+
+### Actions Based on Similarity
+
+#### HIGH Similarity (≥70%)
+
+**Show Warning**:
+```
+⚠️ DUPLICATE DETECTED (Similarity: 85%)
+
+Skill mới bạn đang tạo rất giống với skill hiện có:
+
+📍 Skill hiện có: pdf-processor
+   - Đường dẫn: \.claude\skills\documents\pdf-processor
+   - Mô tả: Extract text and tables from PDF files, fill forms
+   
+🔍 Độ giống:
+   - Name: 90%
+   - Description: 85%
+   - Triggers: 80%
+   - Domain: 100%
+
+💡 GỢI Ý ACTIONS:
+1. [MERGE] Gộp vào skill hiện có (khuyến nghị)
+2. [REFINE] Cải tiến skill cũ với features mới
+3. [CANCEL] Hủy tạo skill mới
+4. [KEEP-BOTH] Giữ cả 2 (phải clarify scopes)
+
+Bạn muốn làm gì? (nhập số 1-4)
+```
+
+**User Options**:
+
+**Option 1: MERGE**
+- Combine 2 skills thành 1
+- Merge descriptions và trigger words
+- Update SKILL.md của skill hiện có
+- **Xóa registration skill cũ** (nếu có) trong active_skill.md
+- **Add registration skill merged** trong active_skill.md
+- Không tạo skill mới
+
+**Option 2: REFINE**
+- Improve skill hiện có với features mới
+- Add sections trong SKILL.md
+- Update description và triggers
+- **Update registration** trong active_skill.md
+- Không tạo skill mới
+
+**Option 3: CANCEL**
+- Hủy tạo skill mới
+- Exit workflow
+- User có thể suggest improve skill cũ
+
+**Option 4: KEEP-BOTH**
+- Clarify scopes rõ ràng cho cả 2
+- Update descriptions để distinguish
+- Proceed với tạo skill mới
+- **Add registration skill mới** trong active_skill.md
+
+#### MEDIUM Similarity (40-69%)
+
+**Show Warning**:
+```
+⚠️ POSSIBLE OVERLAP (Similarity: 55%)
+
+Skill mới có thể overlap với:
+
+📍 Skill hiện có: json-processor
+   - Mô tả: Process, merge, filter JSON files
+   
+🔍 Độ giống: 55%
+
+💡 GỢI Ý:
+- Review skill hiện có trước khi tạo mới
+- Consider mở rộng skill cũ nếu liên quan
+
+Tiếp tục tạo skill mới? (y/n)
+```
+
+**User Options**:
+- `y` - Proceed to Step 2
+- `n` - Review/refine existing skill
+
+#### LOW Similarity (<40%)
+
+**No Warning**:
+```
+✅ No significant overlap detected.
+
+Proceeding with skill creation...
+```
+
+Continue to Step 2 (Chọn Skill location).
+
+### Detailed Guide
+
+Xem **[duplicate-detection.md](./duplicate-detection.md)** cho:
+- Detailed logic explanation
+- Similarity scoring algorithms
+- Action implementation steps
+- Examples và use cases
+
+### Why This Step Matters
+
+**Before Step 1.5** (old workflow):
+```
+User: Tạo skill X
+  ↓
+[Create skill X]
+  ↓
+Later: Realize skill Y đã có chức năng tương tự
+  ↓
+Result: 2 duplicate skills, confusion, hard to maintain
+```
+
+**After Step 1.5** (new workflow):
+```
+User: Tạo skill X
+  ↓
+[Check duplicate]
+  ↓
+Found skill Y (75% similar)
+  ↓
+[Merge X into Y]
+  ↓
+Result: 1 improved skill, clean system, easy to maintain
+```
 
 ---
 
@@ -499,18 +677,21 @@ Xem [registration.md](./registration.md) cho comprehensive guide về skill regi
 
 ## Summary
 
-Workflow 11 bước hoàn chỉnh:
+Workflow 12 bước hoàn chỉnh:
 
 1. ✅ **Xác định phạm vi** - One skill, one capability
-2. ✅ **Chọn location** - Group skill phù hợp
-3. ✅ **Tạo structure** - Folders và required files
-4. ✅ **Viết frontmatter** - name, description chuẩn
-5. ✅ **Viết description** - Specific, triggers, context
-6. ✅ **Cấu trúc nội dung** - Level 1/2/3, <200 dòng
-7. ✅ **Supporting files** - README, reference/, assets/, scripts/
-8. ✅ **Validate** - YAML, structure, content
-9. ✅ **Test** - Activation, behavior, examples
-10. ✅ **Debug** - Fix issues if any
-11. ✅ **Đăng ký** - active_skill.md với triggers
+2. ✅ **Check duplicate (NEW!)** - Tránh trùng lặp, merge/refine existing skills
+3. ✅ **Chọn location** - Group skill phù hợp
+4. ✅ **Tạo structure** - Folders và required files
+5. ✅ **Viết frontmatter** - name, description chuẩn
+6. ✅ **Viết description** - Specific, triggers, context
+7. ✅ **Cấu trúc nội dung** - Level 1/2/3, <200 dòng
+8. ✅ **Supporting files** - README, reference/, assets/, scripts/
+9. ✅ **Validate** - YAML, structure, content
+10. ✅ **Test** - Activation, behavior, examples
+11. ✅ **Debug** - Fix issues if any
+12. ✅ **Đăng ký** - active_skill.md với triggers
 
-Kết quả: Một skill hoàn chỉnh, working, đã đăng ký, sẵn sàng sử dụng! 🚀
+**Key Change**: Step 1.5 (Check Duplicate) ensures no duplicate skills, keeps system clean and efficient.
+
+Kết quả: Một skill hoàn chỉnh, working, đã đăng ký, không duplicate, sẵn sàng sử dụng! 🚀

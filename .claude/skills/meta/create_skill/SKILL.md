@@ -18,11 +18,12 @@ Skill này giúp bạn tạo ra các Agent Skills có cấu trúc tốt cho AI A
 ## What This Skill Does
 
 1. Hướng dẫn xác định phạm vi và mục đích của skill (One Skill = One Capability)
-2. Tạo cấu trúc folder và file theo đúng chuẩn (SKILL.md <200 dòng, README.md <100 ký tự)
-3. Viết SKILL.md với frontmatter hợp lệ (name, description với trigger words)
-4. Tạo các file hỗ trợ (README, reference/, assets/, scripts/)
-5. Validate và test skill vừa tạo
-6. Đăng ký skill vào active_skill.md với trigger words
+2. **Check duplicate skills** - Phát hiện skills trùng/tương tự và đưa ra giải pháp (merge/delete/refine)
+3. Tạo cấu trúc folder và file theo đúng chuẩn (SKILL.md <200 dòng, README.md <100 ký tự)
+4. Viết SKILL.md với frontmatter hợp lệ (name, description với trigger words)
+5. Tạo các file hỗ trợ (README, reference/, assets/, scripts/)
+6. Validate và test skill vừa tạo
+7. Đăng ký skill vào active_skill.md với trigger words
 
 ---
 
@@ -31,20 +32,25 @@ Skill này giúp bạn tạo ra các Agent Skills có cấu trúc tốt cho AI A
 ### Basic Workflow
 
 ```bash
-# 1. Xác định group skill và tạo structure
+# 1. Xác định scope skill (name, description, purpose)
+# 2. CHECK DUPLICATE (NEW!) - Compare với skills hiện có trong active_skill.md
+#    → Nếu HIGH/MEDIUM similarity: Merge/Delete/Refine/Keep-Both/Cancel
+#    → Nếu LOW similarity: Proceed
+# 3. Xác định group skill và tạo structure
 mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 
-# 2. Tạo SKILL.md với frontmatter (name, description)
-# 3. Tạo README.md (<100 ký tự)
-# 4. Tạo references files nếu cần (workflow, examples, validation)
-# 5. Validate YAML, structure, content
-# 6. Test activation với trigger words
-# 7. Đăng ký vào active_skill.md
+# 4. Tạo SKILL.md với frontmatter (name, description)
+# 5. Tạo README.md (<100 ký tự)
+# 6. Tạo references files nếu cần (workflow, examples, validation)
+# 7. Validate YAML, structure, content
+# 8. Test activation với trigger words
+# 9. Đăng ký vào active_skill.md
 ```
 
 ### Key Principles
 
 - **One Skill = One Capability** - Focused, không tạo mega-skills
+- **Check Duplicate First** - Tránh tạo skills trùng lặp, prefer merge/refine existing skills
 - **SKILL.md < 200 dòng** - Content chính ngắn gọn, details trong references/
 - **README.md < 100 ký tự** - Mô tả human-readable, và dùng tiếng Việt
 - **References files < 300 dòng** - Mỗi file 1 tính năng
@@ -55,7 +61,8 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 
 ## Level 3: Reference Guides
 
-- [workflow.md](./references/workflow.md) - Use when: Cần 11 steps chi tiết để tạo skill
+- [workflow.md](./references/workflow.md) - Use when: Cần 12 steps chi tiết để tạo skill (bao gồm duplicate check)
+- [duplicate-detection.md](./references/duplicate-detection.md) - Use when: Cần check duplicate skills, merge/refine existing skills
 - [validation.md](./references/validation.md) - Use when: Cần kiểm tra skill có đúng chuẩn không
 - [examples.md](./references/examples.md) - Use when: Cần tham khảo ví dụ skill mẫu
 - [registration.md](./references/registration.md) - Use when: Cần đăng ký skill vào active_skill.md hoặc update registration
@@ -78,99 +85,21 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 
 ---
 
-## SKILL.md Frontmatter Template
+## SKILL.md Template (Simplified)
 
+Template chuẩn với 3 levels: Overview, Quick Start, References. Chi tiết xem [workflow.md](./references/workflow.md).
+
+**Frontmatter**:
 ```yaml
 ---
-name: skill-name                    # lowercase, hyphens, max 64 chars
+name: skill-name  # lowercase, hyphens, max 64 chars
 description: What it does + When to use it + Trigger words
-allowed-tools: Read, Grep, Glob    # Optional: restrict tools
 ---
-
-# Skill Name
-
-## Level 1: Overview
-Brief 2-3 sentence description.
-
-## Prerequisites
-- Requirements
-
-## What This Skill Does
-1. Function 1
-2. Function 2
-
----
-
-## Level 2: Quick Start
-
-### Basic Usage
-# Commands or examples
-
-### Key Steps
-1. Step 1
-2. Step 2
-
----
-
-## Level 3: Reference Guides
-- [guide.md](./references/guide.md) - Use when: context
-
----
-
-## Common Use Cases
-- Case 1
-- Case 2
-
-## Best Practices
-- Practice 1
-- Practice 2
-
-## Troubleshooting
-| Issue | Solution |
-|-------|----------|
-| Problem | Fix |
 ```
 
----
+**Description Formula**: `[What it does] + [When to use it] + [Key triggers]`
 
-## Description Writing Formula
-
-```
-[What it does] + [When to use it] + [Key triggers]
-```
-
-**Good Example**:
-```yaml
-description: Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
-```
-
-**Include**:
-- File extensions (.pdf, .xlsx, .json)
-- Operations (analyze, extract, generate, create)
-- Domain terms (API, database, UI/UX)
-- User phrases (both Vietnamese và English)
-
----
-
-## Registration Format (active_skill.md)
-
-```markdown
-## Skill {skill-name}:
-- Đường dẫn: \.claude\skills\{group}\{skill-name}
-- Mô tả: {Copy from SKILL.md description}
-- Lời gọi kích hoạt:
-  - "trigger 1"
-  - "trigger 2"
-  - "trigger 3"
-  - "trigger 4"
-  - "trigger 5"
-```
-
-**Update khi**:
-- ✅ Tạo skill mới
-- ✅ Thay đổi description
-- ✅ Thêm trigger words
-- ✅ Đổi tên hoặc move skill
+**Registration**: Copy description và triggers vào `active_skill.md`. Xem [registration.md](./references/registration.md).
 
 ---
 
@@ -222,12 +151,13 @@ description: Extract text and tables from PDF files, fill forms, merge documents
 Khi tạo một Skill, tôi sẽ:
 
 1. ✅ Hỏi các câu làm rõ về scope và requirements
-2. ✅ Suggest skill name và location (group skill)
-3. ✅ Tạo SKILL.md với proper frontmatter (<200 dòng)
-4. ✅ Include clear instructions và examples
-5. ✅ Add supporting files nếu cần (README, references/, assets/, scripts/)
-6. ✅ **Đăng ký skill vào active_skill.md với trigger words**
-7. ✅ Validate against all requirements (YAML, structure, content)
-8. ✅ Test skill activation với trigger words
+2. ✅ **Check duplicate skills trong active_skill.md** - Đưa ra warnings và recommendations nếu phát hiện trùng
+3. ✅ Suggest skill name và location (group skill)
+4. ✅ Tạo SKILL.md với proper frontmatter (<200 dòng)
+5. ✅ Include clear instructions và examples
+6. ✅ Add supporting files nếu cần (README, references/, assets/, scripts/)
+7. ✅ **Đăng ký skill vào active_skill.md với trigger words**
+8. ✅ Validate against all requirements (YAML, structure, content)
+9. ✅ Test skill activation với trigger words
 
-Kết quả: một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, tuân thủ tất cả best practices và validation rules.
+Kết quả: một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, không duplicate, tuân thủ tất cả best practices và validation rules.
