@@ -1,6 +1,6 @@
 ---
 name: laravel
-description: Laravel v12 - The PHP Framework For Web Artisans
+description: Laravel v12.x - The PHP Framework For Web Artisans with powerful new features including Automatic Eager Loading, Native Health Checks, Route Attributes, Queue Batches 2.0, and Typed Auth Guards
 ---
 ## When to Use This Skill
 
@@ -15,6 +15,33 @@ This skill should be triggered when:
 - Following Laravel best practices and conventions
 - Implementing RESTful APIs with Laravel Sanctum or Passport
 - Working with Laravel Mix, Vite, or frontend assets
+
+## Laravel 12.x New Features
+
+Laravel 12.x introduces several game-changing features that significantly improve developer productivity:
+
+### Automatic Eager Loading (12.8+)
+Automatically resolves N+1 query problems by eager-loading relationships when accessed. No more manual `with()` calls needed in many cases.
+
+### Native Health Checks
+Built-in health check endpoints for monitoring system status without external dependencies. Perfect for container orchestration and monitoring tools.
+
+### Route Attributes (PHP 8+)
+Simplified controller routing using PHP 8+ attributes, reducing boilerplate code and keeping routing definitions close to controller methods.
+
+### Queue Batches 2.0
+Enhanced batch processing with conditional chaining, real-time progress events, and automatic cleanup on failures. Reduces boilerplate by ~40%.
+
+### Typed Properties in Auth Guards
+Full IDE autocompletion and static analysis support for authentication guards, catching bugs during CI without runtime overhead.
+
+### Context API & Scoping
+New `Context::scope()` for better context management and `ContextLogProcessor` for enhanced logging capabilities.
+
+### Performance Improvements
+- Enhanced routing performance with improved caching
+- Faster job batching and runtime execution
+- Better query readability and optimization
 
 ## Reference Files
 
@@ -63,14 +90,37 @@ Laravel's dependency injection container:
 - **Binding**: Register class implementations
 - **Singletons**: Share single instance across requests
 
+### Context API (Laravel 12+)
+Advanced context management for logging and tracing:
+- **Context::scope()**: Create isolated context scopes for better request tracking
+- **ContextLogProcessor**: Enhanced logging with contextual information
+- **Automatic propagation**: Context flows through jobs, events, and queues
+
+### Health Checks (Laravel 12+)
+Native application health monitoring:
+- **Built-in endpoints**: Monitor application, database, cache, and queue status
+- **Custom checks**: Define application-specific health criteria
+- **Container-ready**: Perfect for Kubernetes liveness/readiness probes
+
+### Typed Auth Guards (Laravel 12+)
+Enhanced type safety for authentication:
+- **IDE autocompletion**: Full IntelliSense support for auth guards
+- **Static analysis**: Catch authentication bugs during development
+- **Type hints**: Explicit return types for better code quality
+
 ### Artisan Commands
-Laravel's CLI tool:
+Laravel's CLI tool with enhanced capabilities in v12:
 ```bash
 php artisan make:model Post -mcr  # Create model, migration, controller, resource
 php artisan migrate               # Run migrations
 php artisan db:seed              # Seed database
 php artisan queue:work           # Process queue jobs
 php artisan optimize:clear       # Clear all caches
+
+# Laravel 12+ new commands
+php artisan health:check         # Run application health checks
+php artisan context:clear        # Clear context cache
+php artisan route:cache          # Improved route caching performance
 ```
 
 ## Working with This Skill
@@ -130,24 +180,29 @@ Explore:
 ## Best Practices
 
 1. **Use Form Requests**: Separate validation logic from controllers
-2. **Eager Load Relationships**: Avoid N+1 query problems
-3. **Use Resource Controllers**: Follow RESTful conventions
-4. **Type Hints**: Leverage PHP type declarations for better IDE support
-5. **Database Transactions**: Wrap related database operations
-6. **Queue Jobs**: Offload slow operations to background workers
-7. **Cache Queries**: Cache expensive database queries
-8. **API Resources**: Transform data consistently for APIs
-9. **Events**: Decouple application logic with events and listeners
-10. **Tests**: Write tests for critical application logic
+2. **Leverage Automatic Eager Loading (Laravel 12+)**: Let Laravel auto-eager load relationships when accessed
+3. **Use Route Attributes (Laravel 12+)**: Define routes directly on controller methods with PHP 8+ attributes
+4. **Use Resource Controllers**: Follow RESTful conventions
+5. **Type Hints & Typed Guards (Laravel 12+)**: Use typed properties for better IDE support and static analysis
+6. **Database Transactions**: Wrap related database operations
+7. **Queue Batches 2.0 (Laravel 12+)**: Use enhanced batch processing with conditional chaining
+8. **Cache Queries**: Cache expensive database queries
+9. **API Resources**: Transform data consistently for APIs
+10. **Events**: Decouple application logic with events and listeners
+11. **Health Checks (Laravel 12+)**: Implement native health endpoints for monitoring
+12. **Context Scoping (Laravel 12+)**: Use Context::scope() for better request tracking and logging
+13. **Tests**: Write tests for critical application logic
 
 ## Notes
 
-- Laravel 12.x requires PHP 8.2 or higher
+- **Laravel 12.x requires PHP 8.2 or higher** (minimum requirement updated from PHP 8.1)
 - Uses Composer for dependency management
 - Includes Vite for asset compilation (replaces Laravel Mix)
 - Supports multiple database systems (MySQL, PostgreSQL, SQLite, SQL Server)
 - Built-in support for queues, cache, sessions, and file storage
 - Excellent ecosystem with first-party packages (Sanctum, Horizon, Telescope, etc.)
+- Enhanced performance with improved routing, job batching, and runtime execution
+- Native health checks, context API, and typed auth guards available out-of-the-box
 
 
 ---

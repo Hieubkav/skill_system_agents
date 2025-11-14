@@ -22,6 +22,36 @@ Route::middleware(['auth'])->group(function () {
 });
 ```
 
+### Route Attributes (Laravel 12+)
+
+```php
+// Define routes directly on controller methods using PHP 8 attributes
+namespace App\Http\Controllers;
+
+use Illuminate\Routing\Attributes\Route;
+
+class UserController extends Controller
+{
+    #[Route('/users', methods: ['GET'], name: 'users.index')]
+    public function index()
+    {
+        return User::all();
+    }
+
+    #[Route('/users/{user}', methods: ['GET'], name: 'users.show')]
+    public function show(User $user)
+    {
+        return $user;
+    }
+
+    #[Route('/users', methods: ['POST'], name: 'users.store', middleware: ['auth'])]
+    public function store(Request $request)
+    {
+        return User::create($request->validated());
+    }
+}
+```
+
 ### Eloquent Model Basics
 
 ```php
@@ -141,6 +171,36 @@ if ($request->has('author')) {
 }
 
 $posts = $query->get();
+```
+
+### Automatic Eager Loading (Laravel 12.8+)
+
+```php
+// Laravel 12.8+ automatically eager loads relationships when accessed
+// No need to manually use with() in many cases
+
+// Before Laravel 12.8 - Manual eager loading required
+$posts = Post::all(); // N+1 problem
+foreach ($posts as $post) {
+    echo $post->user->name; // Each iteration = 1 query
+}
+
+// Laravel 12.8+ - Automatic eager loading
+$posts = Post::all(); 
+foreach ($posts as $post) {
+    echo $post->user->name; // Automatically batched, no N+1!
+}
+
+// Still can use manual eager loading for complex scenarios
+$posts = Post::with(['user', 'comments.user'])->get();
+
+// Check query performance
+DB::enableQueryLog();
+$posts = Post::all();
+foreach ($posts as $post) {
+    echo $post->user->name;
+}
+dd(DB::getQueryLog()); // See automatic eager loading in action
 ```
 
 ### API Resource Controllers
@@ -275,6 +335,59 @@ ProcessVideo::dispatch($video);
 ProcessVideo::dispatch($video)->onQueue('videos')->delay(now()->addMinutes(5));
 ```
 
+### Queue Batches 2.0 (Laravel 12+)
+
+```php
+use Illuminate\Bus\Batch;
+use Illuminate\Support\Facades\Bus;
+
+// Create batch with enhanced features
+$batch = Bus::batch([
+    new ProcessVideo($video1),
+    new ProcessVideo($video2),
+    new ProcessVideo($video3),
+])
+->then(function (Batch $batch) {
+    // All jobs completed successfully
+    Notification::send('Batch completed');
+})
+->catch(function (Batch $batch, Throwable $e) {
+    // First job failure detected
+    Log::error('Batch failed', ['error' => $e->getMessage()]);
+})
+->finally(function (Batch $batch) {
+    // Batch finished executing (success or failure)
+    $batch->cleanup(); // Automatic cleanup
+})
+->allowFailures() // Continue even if some jobs fail
+->dispatch();
+
+// Conditional chaining - chain jobs based on batch success
+$batch = Bus::batch($jobs)
+    ->then(function (Batch $batch) {
+        // Only runs if ALL jobs succeed
+        GenerateReport::dispatch($batch->id);
+    })
+    ->dispatch();
+
+// Real-time progress tracking
+$batch = Bus::batch($jobs)
+    ->progress(function (Batch $batch) {
+        // Called after each job completes
+        broadcast(new BatchProgressEvent(
+            $batch->processedJobs(),
+            $batch->totalJobs,
+            $batch->progress()
+        ));
+    })
+    ->dispatch();
+
+// Check batch status
+$batch = Bus::findBatch($batchId);
+echo "Progress: {$batch->progress()}%";
+echo "Processed: {$batch->processedJobs()}/{$batch->totalJobs}";
+```
+
 ### Service Container and Dependency Injection
 
 ```php
@@ -302,4 +415,167 @@ public function charge(Request $request)
         $request->amount
     );
 }
+```
+
+### Typed Auth Guards (Laravel 12+)
+
+```php
+// Define typed auth guard in controller
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+class ProfileController extends Controller
+{
+    public function show(Request $request): User
+    {
+        // Typed return - IDE autocompletion works!
+        return Auth::user();
+    }
+
+    public function update(Request $request)
+    {
+        /** @var User $user */
+        $user = Auth::user(); // Full type inference
+        
+        $user->update($request->validated());
+        
+        return $user;
+    }
+}
+
+// Custom guard with typed return
+use Illuminate\Contracts\Auth\Guard;
+
+class AdminGuard implements Guard
+{
+    public function user(): ?Admin
+    {
+        // Returns Admin model, not generic User
+        return $this->provider->retrieveById($this->id);
+    }
+}
+
+// Usage with full IDE support
+$admin = Auth::guard('admin')->user(); // Returns Admin, not User
+$admin->adminSpecificMethod(); // IDE knows this method exists!
+```
+
+### Health Checks (Laravel 12+)
+
+```php
+// config/health.php - Configure health checks
+return [
+    'checks' => [
+        'database' => true,
+        'cache' => true,
+        'queue' => true,
+        'storage' => true,
+    ],
+    
+    'endpoint' => '/health',
+];
+
+// Create custom health check
+namespace App\Health;
+
+use Illuminate\Support\Facades\Http;
+
+class ApiHealthCheck
+{
+    public function check(): bool
+    {
+        try {
+            $response = Http::timeout(3)->get('https://api.example.com/ping');
+            return $response->successful();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+}
+
+// Register custom check in AppServiceProvider
+use Illuminate\Support\Facades\Health;
+
+public function boot(): void
+{
+    Health::check('external-api', new ApiHealthCheck);
+}
+
+// Access health endpoint
+// GET /health
+// Response:
+// {
+//   "status": "healthy",
+//   "checks": {
+//     "database": "ok",
+//     "cache": "ok",
+//     "queue": "ok",
+//     "external-api": "ok"
+//   },
+//   "timestamp": "2025-11-14T10:30:00Z"
+// }
+
+// Use in Kubernetes liveness probe
+// livenessProbe:
+//   httpGet:
+//     path: /health
+//     port: 80
+//   initialDelaySeconds: 30
+//   periodSeconds: 10
+```
+
+### Context API & Scoping (Laravel 12+)
+
+```php
+use Illuminate\Support\Facades\Context;
+
+// Set context for request tracking
+Context::add('user_id', auth()->id());
+Context::add('request_id', Str::uuid());
+Context::add('ip_address', request()->ip());
+
+// Context automatically flows through logs
+Log::info('Processing payment'); 
+// Logs include: user_id, request_id, ip_address automatically
+
+// Scoped context - isolated from parent scope
+Context::scope(function () {
+    Context::add('batch_id', $batch->id);
+    Context::add('job_name', 'ProcessVideo');
+    
+    // This context only exists in this scope
+    ProcessVideoJob::dispatch($video);
+}); 
+// batch_id and job_name are removed after scope exits
+
+// Context in jobs - automatically propagated
+class ProcessOrder implements ShouldQueue
+{
+    public function handle()
+    {
+        // Context from dispatch location is available here!
+        $requestId = Context::get('request_id');
+        $userId = Context::get('user_id');
+        
+        Log::info('Processing order', [
+            'order_id' => $this->order->id,
+            // request_id and user_id automatically included
+        ]);
+    }
+}
+
+// ContextLogProcessor - enhanced logging
+// config/logging.php
+'stack' => [
+    'driver' => 'stack',
+    'channels' => ['daily'],
+    'processors' => [
+        \Illuminate\Log\Context\ContextLogProcessor::class,
+    ],
+],
+
+// All logs now include context automatically
+Log::info('User action'); 
+// Output: [2025-11-14 10:30:00] local.INFO: User action 
+// {"user_id":123,"request_id":"uuid-here","ip":"192.168.1.1"}
 ```
