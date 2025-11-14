@@ -1,6 +1,6 @@
 # Skill Creation Workflow
 
-Quy trình 12 bước chi tiết để tạo một Agent Skill hoàn chỉnh (bao gồm duplicate detection).
+Quy trình 13 bước chi tiết để tạo một Agent Skill hoàn chỉnh (bao gồm duplicate detection và auto-update index).
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Quy trình 12 bước chi tiết để tạo một Agent Skill hoàn chỉnh (ba
 - [Step 8: Validate Skill](#step-8-validate-skill)
 - [Step 9: Test Skill](#step-9-test-skill)
 - [Step 10: Debug nếu cần](#step-10-debug-nếu-cần)
-- [Step 11: Đăng ký Skill vào active_skill.md](#step-11-đăng-ký-skill-vào-active_skillmd)
+- [Step 12: Đăng ký Skill vào active_skill.md](#step-11-đăng-ký-skill-vào-active_skillmd)
 
 ---
 
@@ -600,7 +600,7 @@ AI AGENT --debug
 
 ---
 
-## Step 11: Đăng ký Skill vào active_skill.md
+## Step 12: Đăng ký Skill vào active_skill.md
 
 ### QUAN TRỌNG:
 Sau khi tạo hoặc cập nhật skill, **phải đăng ký** vào:
@@ -677,7 +677,7 @@ Xem [registration.md](./registration.md) cho comprehensive guide về skill regi
 
 ## Summary
 
-Workflow 12 bước hoàn chỉnh:
+Workflow 13 bước hoàn chỉnh:
 
 1. ✅ **Xác định phạm vi** - One skill, one capability
 2. ✅ **Check duplicate (NEW!)** - Tránh trùng lặp, merge/refine existing skills
@@ -691,7 +691,20 @@ Workflow 12 bước hoàn chỉnh:
 10. ✅ **Test** - Activation, behavior, examples
 11. ✅ **Debug** - Fix issues if any
 12. ✅ **Đăng ký** - active_skill.md với triggers
+13. ✅ **Auto-update index (CRITICAL!)** - Regenerate skill_index.md và skills/
 
-**Key Change**: Step 1.5 (Check Duplicate) ensures no duplicate skills, keeps system clean and efficient.
+**Key Changes**: 
+- Step 1.5 (Check Duplicate) ensures no duplicate skills
+- Step 13 (Auto-update Index) keeps index synced automatically
 
-Kết quả: Một skill hoàn chỉnh, working, đã đăng ký, không duplicate, sẵn sàng sử dụng! 🚀
+**IMPORTANT**: After Step 12, AI MUST run:
+```bash
+python .claude/skills/meta/create_skill/scripts/generate_skill_index.py
+```
+
+This regenerates:
+- `skill_index.md` (11.5 KB lightweight index)
+- `skills/{domain}/{skill-name}.md` (42 individual files)
+
+Kết quả: Một skill hoàn chỉnh, working, đã đăng ký, index đã sync, không duplicate, sẵn sàng sử dụng! 🚀
+

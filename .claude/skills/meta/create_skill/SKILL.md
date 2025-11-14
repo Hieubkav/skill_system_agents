@@ -45,6 +45,8 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 # 7. Validate YAML, structure, content
 # 8. Test activation với trigger words
 # 9. Đăng ký vào active_skill.md
+# 10. AUTO-UPDATE INDEX (CRITICAL!) - Regenerate skill_index.md và skills/ folder
+python .claude/skills/meta/create_skill/scripts/generate_skill_index.py
 ```
 
 ### Key Principles
@@ -56,6 +58,7 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 - **References files < 300 dòng** - Mỗi file 1 tính năng
 - **Trigger words** - Both Vietnamese và English, 5-10 triggers
 - **Register immediately** - Đăng ký vào active_skill.md ngay sau khi tạo
+- **Auto-update index** - Chạy generate_skill_index.py sau mỗi skill change (CRITICAL!)
 
 ---
 
@@ -134,6 +137,18 @@ description: What it does + When to use it + Trigger words
 
 ---
 
+## Utility Scripts
+
+Skill này includes automation scripts trong `scripts/` folder:
+
+- **list_skills.py** - List tất cả skills đã đăng ký
+- **update_active_skills.py** - Batch update active_skill.md (remove old, add new skills)
+- **cleanup_duplicates.py** - Remove duplicate skill registrations
+
+Xem [scripts/README.md](./scripts/README.md) cho chi tiết usage.
+
+---
+
 ## Troubleshooting
 
 | Issue | Solution |
@@ -143,6 +158,7 @@ description: What it does + When to use it + Trigger words
 | Description quá vague | Add file extensions (.pdf, .xlsx); Add operations (create, analyze); Add "Use when..." clause |
 | Trigger words không work | Verify format (2 spaces indent, quotes); Add both VN và EN; Include file types |
 | Wrong skill activates | Make triggers more specific; Review overlap với other skills; Update description |
+| Duplicate skills | Run `scripts/cleanup_duplicates.py` để remove duplicates |
 
 ---
 
@@ -159,5 +175,11 @@ Khi tạo một Skill, tôi sẽ:
 7. ✅ **Đăng ký skill vào active_skill.md với trigger words**
 8. ✅ Validate against all requirements (YAML, structure, content)
 9. ✅ Test skill activation với trigger words
+10. ✅ **AUTO-UPDATE INDEX** - Chạy `generate_skill_index.py` để sync skill_index.md và skills/ folder
 
-Kết quả: một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, không duplicate, tuân thủ tất cả best practices và validation rules.
+**CRITICAL**: Sau mỗi skill change (create/update/merge/delete), PHẢI chạy:
+```bash
+python .claude/skills/meta/create_skill/scripts/generate_skill_index.py
+```
+
+Kết quả: một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, index đã sync, không duplicate, tuân thủ tất cả best practices và validation rules.

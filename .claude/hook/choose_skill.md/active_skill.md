@@ -1,20 +1,5 @@
 # Chọn Skill dựa theo lời gọi
 
-## Skill ux-designer: 
-- Đường dẫn: \.claude\skills\frontend\ux-designer
-- Mô tả: Expert UI/UX design guidance for building unique, accessible, and user-centered interfaces. Use when designing interfaces, making visual design decisions, choosing colors/typography/layouts, implementing responsive design, or improving accessibility.
-- Lời gọi kích hoạt:
-  - "design" / "thiết kế"
-  - "UI" / "UX"
-  - "styling" / "visual"
-  - "appearance" / "giao diện"
-  - "colors" / "màu sắc"
-  - "fonts" / "typography"
-  - "layouts" / "spacing"
-  - "responsive" / "mobile"
-  - "accessibility" / "WCAG"
-  - "user interface" / "user experience"
-  - "thiết kế giao diện" / "thiết kế UI/UX"
 
 ## Skill create-skill:
 - Đường dẫn: \.claude\skills\meta\create-skill
@@ -143,22 +128,6 @@
   - "test dataset"
   - "seeder"
 
-## Skill database-performance-tuning:
-- Đường dẫn: \.claude\skills\database\database-performance-tuning
-- Mô tả: Analyze and optimize database performance through index analysis, query profiling, and EXPLAIN plan interpretation. Identify missing/unused indexes, find bottlenecks, and recommend optimization strategies. Use when optimizing slow queries, analyzing workloads, improving query execution speed, or managing database indexes.
-- Lời gọi kích hoạt:
-  - "optimize database"
-  - "tối ưu database"
-  - "slow query"
-  - "query chậm"
-  - "database performance"
-  - "hiệu năng database"
-  - "index optimization"
-  - "EXPLAIN plan"
-  - "query profiling"
-  - "missing index"
-  - "unused index"
-  - "database tuning"
 
 ## Skill database-security-audit:
 - Đường dẫn: \.claude\skills\database\database-security-audit
@@ -229,22 +198,6 @@
   - "ORM code"
   - "generate model"
 
-## Skill sql-query-optimization:
-- Đường dẫn: \.claude\skills\database\sql-query-optimization
-- Mô tả: Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Learn proven patterns for fixing N+1 queries, implementing efficient pagination, and optimizing JOINs. Use when debugging slow queries, designing schemas, or optimizing application performance.
-- Lời gọi kích hoạt:
-  - "SQL optimization"
-  - "tối ưu SQL"
-  - "optimize query"
-  - "tối ưu query"
-  - "slow SQL"
-  - "SQL performance"
-  - "N+1 query"
-  - "query optimization"
-  - "indexing strategy"
-  - "EXPLAIN ANALYZE"
-  - "query patterns"
-  - "efficient pagination"
 
 ## Skill filament-form-debugger:
 - Đường dẫn: \.claude\skills\filament\filament-form-debugger
@@ -264,39 +217,6 @@
   - "debug Filament"
   - "Filament namespace"
 
-## Skill filament-resource-generator:
-- Đường dẫn: \.claude\skills\filament\filament-resource-generator
-- Mô tả: Automated Filament resource generation with correct namespace imports (Schemas vs Forms), Vietnamese labels, standard structure, Observer patterns, ImagesRelationManager integration. USE WHEN user says 'tạo resource mới', 'create new resource', 'generate Filament resource', 'scaffold admin resource', or wants to add new entity to admin panel.
-- Lời gọi kích hoạt:
-  - "tạo resource mới"
-  - "create new resource"
-  - "generate Filament resource"
-  - "scaffold admin resource"
-  - "tạo Filament resource"
-  - "new Filament resource"
-  - "admin panel resource"
-  - "generate resource"
-  - "make filament resource"
-  - "filament resource"
-  - "admin resource"
-  - "tạo admin resource"
-
-## Skill filament-rules:
-- Đường dẫn: \.claude\skills\filament\filament-rules
-- Mô tả: Filament 4.x coding standards for Laravel 12. Custom Schema namespace (NOT Form), Vietnamese UI, Observer patterns, Image management. USE WHEN creating resources, fixing namespace errors, implementing forms, RelationManagers, Settings pages, or any Filament development.
-- Lời gọi kích hoạt:
-  - "Filament standards"
-  - "chuẩn Filament"
-  - "Filament 4.x"
-  - "Filament development"
-  - "Filament coding"
-  - "Filament best practices"
-  - "Schema namespace"
-  - "RelationManager"
-  - "Filament Settings"
-  - "Filament form"
-  - "Filament table"
-  - "Filament patterns"
 
 ## Skill image-management:
 - Đường dẫn: \.claude\skills\filament\image-management
@@ -516,17 +436,6 @@
   - "Route Handlers"
   - "Next.js middleware"
 
-## Skill frontend-components:
-- Đường dẫn: \.claude\skills\frontend\frontend-components
-- Mô tả: Design reusable, composable UI components following single responsibility principle with clear interfaces, encapsulation, and minimal props. Use when creating or modifying frontend components in any framework.
-- Lời gọi kích hoạt:
-  - "frontend components"
-  - "UI components"
-  - "component design"
-  - "reusable components"
-  - "component architecture"
-  - "React components"
-  - "Vue components"
 
 ## Skill frontend-dev-guidelines:
 - Đường dẫn: \.claude\skills\frontend\frontend-dev-guidelines
@@ -553,53 +462,6 @@
   - "touch-friendly"
   - "fluid layout"
 
-## Skill react-component-architecture:
-- Đường dẫn: \.claude\skills\frontend\react-component-architecture
-- Mô tả: Design scalable React components using functional components, hooks, composition patterns, and TypeScript. Use when building reusable component libraries and maintainable UI systems.
-- Lời gọi kích hoạt:
-  - "React architecture"
-  - "React components"
-  - "React hooks"
-  - "React patterns"
-  - "React composition"
-  - "React TypeScript"
-  - "React best practices"
-
-## Skill tailwind-css:
-- Đường dẫn: \.claude\skills\frontend\tailwind-css
-- Mô tả: Utility-first CSS framework for rapid UI development with responsive design, component patterns, and production optimization. Master core utilities, dark mode, customization, and modern component composition.
-- Lời gọi kích hoạt:
-  - "Tailwind CSS"
-  - "Tailwind"
-  - "utility-first CSS"
-  - "Tailwind components"
-  - "Tailwind dark mode"
-  - "Tailwind responsive"
-  - "Tailwind customization"
-
-## Skill ui-design-system:
-- Đường dẫn: \.claude\skills\frontend\ui-design-system
-- Mô tả: UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive design calculations, and developer handoff tools. Use for creating design systems, maintaining visual consistency, and facilitating design-dev collaboration.
-- Lời gọi kích hoạt:
-  - "design system"
-  - "design tokens"
-  - "UI design system"
-  - "design guidelines"
-  - "component documentation"
-  - "design tokens generation"
-
-## Skill ui-styling:
-- Đường dẫn: \.claude\skills\frontend\ui-styling
-- Mô tả: Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, or creating responsive layouts.
-- Lời gọi kích hoạt:
-  - "shadcn/ui"
-  - "shadcn"
-  - "Radix UI"
-  - "UI styling"
-  - "accessible components"
-  - "design system"
-  - "Tailwind components"
-  - "dark mode"
 
 ## Skill zustand-state-management:
 - Đường dẫn: \.claude\skills\frontend\zustand-state-management
@@ -639,18 +501,6 @@
   - "performance optimization"
   - "speed optimization"
 
-## Skill seo-content-optimizer:
-- Đường dẫn: \.claude\skills\content_marketing\seo-content-optimizer
-- Mô tả: Optimize content for search engines with keyword analysis, readability scoring, meta descriptions, and competitor comparison. Use when improving SEO, optimizing blog posts, or analyzing content for search performance.
-- Lời gọi kích hoạt:
-  - "SEO optimization"
-  - "optimize SEO"
-  - "SEO content"
-  - "keyword analysis"
-  - "meta description"
-  - "readability"
-  - "content optimization"
-  - "search optimization"
 
 ## Skill product-search-scoring:
 - Đường dẫn: \.claude\skills\content_marketing\product-search-scoring
@@ -664,44 +514,6 @@
   - "search algorithm"
   - "Vietnamese search"
 
-## Skill google-official-seo-guide:
-- Đường dẫn: \.claude\skills\research\google-official-seo-guide
-- Mô tả: Official Google SEO guide covering search optimization, best practices, Search Console, crawling, indexing, and improving website search visibility based on official Google documentation.
-- Lời gọi kích hoạt:
-  - "Google SEO"
-  - "SEO best practices"
-  - "Google Search Console"
-  - "search visibility"
-  - "crawling"
-  - "indexing"
-  - "structured data"
-  - "rich results"
-  - "Google ranking"
-
-## Skill e2e-testing-patterns:
-- Đường dẫn: \.claude\skills\testing\e2e-testing-patterns
-- Mô tả: Master end-to-end testing with Playwright and Cypress to build reliable test suites that catch bugs, improve confidence, and enable fast deployment. Use when implementing E2E tests, debugging flaky tests, or establishing testing standards.
-- Lời gọi kích hoạt:
-  - "E2E testing"
-  - "end-to-end testing"
-  - "Playwright"
-  - "Cypress"
-  - "test automation"
-  - "E2E patterns"
-  - "flaky tests"
-  - "testing standards"
-
-## Skill playwright-automation:
-- Đường dẫn: \.claude\skills\testing\playwright-automation
-- Mô tả: Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, automate any browser task.
-- Lời gọi kích hoạt:
-  - "Playwright"
-  - "browser automation"
-  - "test browser"
-  - "automated testing"
-  - "browser testing"
-  - "Playwright test"
-  - "web automation"
 
 ## Skill qa-verification:
 - Đường dẫn: \.claude\skills\testing\qa-verification
@@ -736,4 +548,156 @@
   - "repository snapshot"
   - "AI-friendly format"
   - "code packaging"
- 
+## Skill database-performance-optimization:
+- Đường dẫn: \.claude\skills\database\database-performance-optimization
+- Mô tả: Master database and SQL query optimization through index analysis, EXPLAIN plans, query profiling, N+1 pattern fixes, efficient pagination, and performance tuning. Identify bottlenecks, optimize slow queries, and implement indexing strategies for dramatically improved database performance. Use when debugging slow queries, analyzing workloads, improving query execution speed, or optimizing application performance.
+- Lời gọi kích hoạt:
+  - "optimize database"
+  - "tối ưu database"
+  - "slow query"
+  - "query chậm"
+  - "database performance"
+  - "hiệu năng database"
+  - "index optimization"
+  - "EXPLAIN plan"
+  - "query profiling"
+  - "missing index"
+  - "unused index"
+  - "database tuning"
+  - "SQL optimization"
+  - "tối ưu SQL"
+  - "optimize query"
+  - "tối ưu query"
+  - "SQL performance"
+  - "N+1 query"
+  - "query optimization"
+  - "indexing strategy"
+  - "EXPLAIN ANALYZE"
+  - "query patterns"
+  - "efficient pagination"
+
+## Skill playwright-e2e-testing:
+- Đường dẫn: \.claude\skills\testing\playwright-e2e-testing
+- Mô tả: Complete E2E testing and browser automation with Playwright. Build reliable test suites, automate browser tasks, test pages/forms, validate UX, check responsive design, test login flows, implement test patterns, debug flaky tests. Auto-detects dev servers, provides testing best practices. Use when implementing E2E tests, automating browser interactions, establishing testing standards, or debugging flaky tests.
+- Lời gọi kích hoạt:
+  - "E2E testing"
+  - "end-to-end testing"
+  - "Playwright"
+  - "browser automation"
+  - "test automation"
+  - "E2E patterns"
+  - "flaky tests"
+  - "testing standards"
+  - "Playwright test"
+  - "web automation"
+  - "test browser"
+  - "automated testing"
+
+## Skill seo-optimization:
+- Đường dẫn: \.claude\skills\content_marketing\seo-optimization
+- Mô tả: Comprehensive SEO optimization using official Google guidelines. Optimize content with keyword analysis, readability scoring, meta descriptions, Search Console, crawling, indexing, structured data, and rich results. Use when improving SEO, optimizing content, analyzing search performance, or following Google best practices.
+- Lời gọi kích hoạt:
+  - "SEO optimization"
+  - "optimize SEO"
+  - "SEO content"
+  - "keyword analysis"
+  - "meta description"
+  - "readability"
+  - "content optimization"
+  - "search optimization"
+  - "Google SEO"
+  - "SEO best practices"
+  - "Google Search Console"
+  - "search visibility"
+  - "crawling"
+  - "indexing"
+  - "structured data"
+  - "rich results"
+  - "Google ranking"
+
+## Skill ui-ux-design-system:
+- Đường dẫn: \.claude\skills\frontend\ui-ux-design-system
+- Mô tả: Expert UI/UX design and design system toolkit. Build accessible, user-centered interfaces with design tokens, component documentation, responsive calculations, visual design decisions (colors, typography, layouts). Use when designing interfaces, creating design systems, making design decisions, choosing colors/typography/layouts, implementing responsive design, or improving accessibility.
+- Lời gọi kích hoạt:
+  - "design" / "thiết kế"
+  - "UI" / "UX"
+  - "styling" / "visual"
+  - "appearance" / "giao diện"
+  - "colors" / "màu sắc"
+  - "fonts" / "typography"
+  - "layouts" / "spacing"
+  - "responsive" / "mobile"
+  - "accessibility" / "WCAG"
+  - "user interface" / "user experience"
+  - "thiết kế giao diện" / "thiết kế UI/UX"
+  - "design system"
+  - "design tokens"
+  - "design guidelines"
+  - "component documentation"
+  - "design tokens generation"
+
+## Skill filament-resource-generator:
+- Đường dẫn: \.claude\skills\filament\filament-resource-generator
+- Mô tả: Automated Filament 4.x resource generation following coding standards (Schema namespace, Vietnamese labels, Observer patterns, ImagesRelationManager). Includes namespace rules, best practices, form/table patterns, and RelationManagers. USE WHEN creating resources, fixing namespace errors, implementing forms/tables, RelationManagers, Settings pages, or any Filament development.
+- Lời gọi kích hoạt:
+  - "tạo resource mới"
+  - "create new resource"
+  - "generate Filament resource"
+  - "scaffold admin resource"
+  - "tạo Filament resource"
+  - "new Filament resource"
+  - "admin panel resource"
+  - "generate resource"
+  - "make filament resource"
+  - "filament resource"
+  - "admin resource"
+  - "tạo admin resource"
+  - "Filament standards"
+  - "chuẩn Filament"
+  - "Filament 4.x"
+  - "Filament development"
+  - "Filament coding"
+  - "Filament best practices"
+  - "Schema namespace"
+  - "RelationManager"
+  - "Filament Settings"
+  - "Filament form"
+  - "Filament table"
+  - "Filament patterns"
+
+## Skill react-component-architecture:
+- Đường dẫn: \.claude\skills\frontend\react-component-architecture
+- Mô tả: Design scalable, reusable React components following single responsibility principle with functional components, hooks, composition patterns, TypeScript, clear interfaces, encapsulation, and minimal props. Use when building reusable component libraries, maintainable UI systems, or creating/modifying frontend components in any framework.
+- Lời gọi kích hoạt:
+  - "React architecture"
+  - "React components"
+  - "React hooks"
+  - "React patterns"
+  - "React composition"
+  - "React TypeScript"
+  - "React best practices"
+  - "frontend components"
+  - "UI components"
+  - "component design"
+  - "reusable components"
+  - "component architecture"
+  - "Vue components"
+
+## Skill ui-styling:
+- Đường dẫn: \.claude\skills\frontend\ui-styling
+- Mô tả: Create beautiful, accessible user interfaces with shadcn/ui components (Radix UI + Tailwind), Tailwind CSS utility-first framework, responsive design, dark mode, component patterns, and canvas-based visual designs. Master Tailwind utilities, customization, production optimization. Use when building user interfaces, implementing design systems, creating responsive layouts, styling components, customizing themes, or establishing styling patterns.
+- Lời gọi kích hoạt:
+  - "shadcn/ui"
+  - "shadcn"
+  - "Radix UI"
+  - "UI styling"
+  - "accessible components"
+  - "design system"
+  - "Tailwind components"
+  - "dark mode"
+  - "Tailwind CSS"
+  - "Tailwind"
+  - "utility-first CSS"
+  - "Tailwind dark mode"
+  - "Tailwind responsive"
+  - "Tailwind customization"

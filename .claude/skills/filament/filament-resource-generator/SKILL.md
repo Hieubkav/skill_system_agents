@@ -1,6 +1,6 @@
 ---
 name: filament-resource-generator
-description: Automated Filament resource generation with correct namespace imports (Schemas vs Forms), Vietnamese labels, standard structure, Observer patterns, ImagesRelationManager integration. USE WHEN user says 'tạo resource mới', 'create new resource', 'generate Filament resource', 'scaffold admin resource', or wants to add new entity to admin panel.
+description: Automated Filament 4.x resource generation following coding standards (Schema namespace, Vietnamese labels, Observer patterns, ImagesRelationManager). Includes namespace rules, best practices, form/table patterns, and RelationManagers. USE WHEN creating resources, fixing namespace errors, implementing forms/tables, RelationManagers, Settings pages, or any Filament development.
 ---
 
 # Filament Resource Generator - Quick Workflow

@@ -1,0 +1,31 @@
+## Skill api-design-patterns:
+
+- Đường dẫn: \.claude\skills\api\api-design-patterns
+- Mô tả: Comprehensive REST and GraphQL API design patterns, best practices, OpenAPI specifications, versioning, authentication, error handling, pagination, rate limiting, and security. Use when designing APIs, creating endpoints, reviewing specifications, implementing authentication, or building scalable backend services.
+- Lời gọi kích hoạt:
+  - "API design"
+  - "thiết kế API"
+  - "REST API"
+  - "GraphQL"
+  - "API patterns"
+  - "API best practices"
+  - "OpenAPI"
+  - "Swagger"
+  - "API versioning"
+  - "API authentication"
+  - "JWT"
+  - "OAuth"
+  - "error handling"
+  - "API pagination"
+  - "rate limiting"
+  - "API security"
+  - "endpoint design"
+  - "API specs"
+  - "API review"
+  - "backend API"
+  - "scalable API"
+  - "HTTP methods"
+  - "status codes"
+  - "webhooks"
+  - "async operations"
+
