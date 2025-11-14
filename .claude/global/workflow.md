@@ -77,6 +77,8 @@ Bạn chốt todos list này không? (Có thể đề xuất thay đổi)
 
 ---
 
+- Khi làm xong hoặc hỏi lại người hỏi hãy phát ra âm thật lớn [Console]::Beep(4000, 3000) 
+
 # Bước 4: Execute Todos
 Sau khi user chốt todos:
 

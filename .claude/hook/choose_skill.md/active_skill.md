@@ -35,4 +35,54 @@
   - "frontmatter"
   - "Agent Skills"
   - "tạo Agent Skill"
+
+## Skill api-cache-invalidation:
+- Đường dẫn: \.claude\skills\api\api-cache-invalidation
+- Mô tả: Automatic cache invalidation system với Laravel Observers và Next.js On-Demand Revalidation. Tự động sync data real-time giữa backend và frontend khi admin update. USE WHEN cần setup cache management, sync frontend-backend, API cache strategy, hoặc user phàn nàn "phải Ctrl+F5 mới thấy data mới".
+- Lời gọi kích hoạt:
+  - "cache invalidation"
+  - "cache không update"
+  - "revalidation"
+  - "cache management"
+  - "sync data real-time"
+  - "Ctrl+F5"
+  - "phải Ctrl+F5 mới thấy data mới"
+  - "cache strategy"
+  - "ISR"
+  - "Incremental Static Regeneration"
+  - "Observer pattern"
+  - "Laravel Observers"
+  - "Next.js revalidation"
+  - "on-demand revalidation"
+  - "frontend không reflect backend"
+
+## Skill api-design-patterns:
+- Đường dẫn: \.claude\skills\api\api-design-patterns
+- Mô tả: Comprehensive REST and GraphQL API design patterns, best practices, OpenAPI specifications, versioning, authentication, error handling, pagination, rate limiting, and security. Use when designing APIs, creating endpoints, reviewing specifications, implementing authentication, or building scalable backend services.
+- Lời gọi kích hoạt:
+  - "API design"
+  - "thiết kế API"
+  - "REST API"
+  - "GraphQL"
+  - "API patterns"
+  - "API best practices"
+  - "OpenAPI"
+  - "Swagger"
+  - "API versioning"
+  - "API authentication"
+  - "JWT"
+  - "OAuth"
+  - "error handling"
+  - "API pagination"
+  - "rate limiting"
+  - "API security"
+  - "endpoint design"
+  - "API specs"
+  - "API review"
+  - "backend API"
+  - "scalable API"
+  - "HTTP methods"
+  - "status codes"
+  - "webhooks"
+  - "async operations"
  
