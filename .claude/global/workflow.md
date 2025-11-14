@@ -1,136 +1,33 @@
-# Bước 1: Phân Tích Task
+# Skill System Workflow 
 
-## 1.1 Viết Lại Yêu Cầu
-- **Yêu cầu gốc**: {User request}
-- **Yêu cầu rõ ràng**: {Paraphrase clear và specific}
+## Bước 1: Phân Tích Task
+- Xác định **domain** (API/Database/Frontend/Backend/Testing/etc)
+- Chia subtasks nếu phức tạp
 
-## 1.2 Phân Loại
-- **Loại**: Tạo mới/Phân tích/Chuyển đổi/Validate/Review/Tối ưu
-- **Domain**: API/UI-UX/Data/Git/Documents/Code
-- **Độ khó**: Dễ ⭐ / Trung bình ⭐⭐ / Khó ⭐⭐⭐ / Rất khó ⭐⭐⭐⭐
-- **Lý do độ khó**: {Giải thích}
+## Bước 2: Match Skills
+- Đọc `\.claude\hook\choose_skill.md\active_skill.md`
+- Match dựa trên triggers và domain
+- Nếu user chỉ định skill → dùng luôn
+- Nếu không → tự động chọn skill phù hợp nhất
 
-## 1.3 Chia Nhỏ (nếu phức tạp)
-- Subtask 1, 2, 3...
----
+## Bước 3: Load Skill Details
+- Đọc `\.claude\skills\{group}\{skill-name}\SKILL.md`
+- Progressive loading: Level 1 (Overview) → Level 2 (Quick Start) → Level 3 (References on-demand)
+- Load reference files khi cần (workflow.md, examples.md)
 
-# Bước 2: Chọn Skill Combo
-
-## CASE A: User KHÔNG Chỉ Định Skill
-1. Đọc `\.claude\hook\choose_skill.md\active_skill.md`
-2. Match skills (triggers, file types, operations)
-3. Tạo 1-2 combos tốt nhất
-4. Trình bày:
-```
-Combo 1: {name} (đề xuất)
-- Skills: {skill-1} + {skill-2}
-- Steps: 1) {step1}, 2) {step2}
-- ✅ Mạnh: {pros} | ⚠️ Yếu: {cons}
-
-Combo 2: {name}
-...
-```
-
-## CASE B: User ĐÃ Chỉ Định
-→ Skip combo, xác nhận dùng skill {skill-name}
-
----
-
-# Bước 3: Load Skills
-1. Đọc SKILL.md: `\.claude\skills\{group}\{skill-name}\SKILL.md`
-2. Load theo Level: 1 (Overview) → 2 (Quick Start) → 3 (References on-demand)
-3. Check Prerequisites (tools, dependencies, permissions)
-4. Load reference files khi cần (workflow.md, examples.md, validation.md)
-
----
-
-# Bước 3.5: Show Todos (TRƯỚC KHI EXECUTE)
-**Tạo và trình bày todos list** cho user chốt:
-
-```
-📋 **Todos List**:
-
-1. [{priority}] {Action} - {Lý do/mục đích} (Optional/Required)
-2. [{priority}] {Action} - {Lý do/mục đích} (Optional/Required)
-3. [{priority}] {Action} - {Lý do/mục đích} (Optional/Required)
-...
-
-Ví dụ:
-1. [HIGH] Tạo folder structure - Chuẩn bị cấu trúc skill (Required)
-2. [HIGH] Viết SKILL.md frontmatter - Name và description (Required)
-3. [MEDIUM] Tạo reference/workflow.md - Chi tiết 11 steps (Optional)
-4. [HIGH] Đăng ký vào active_skill.md - Để skill activate được (Required)
-5. [MEDIUM] Test skill activation - Verify triggers work (Optional)
-
-**Required**: Bước bắt buộc phải làm
-**Optional**: Bước có thể bỏ qua hoặc làm sau
-
-Bạn chốt todos list này không? (Có thể đề xuất thay đổi)
-```
-
-**Quy tắc todos**:
-- Gọn gàng, mỗi item 1 dòng
-- Có priority: HIGH/MEDIUM/LOW
-- Có lý do/mục đích ngắn gọn
-- Đánh dấu Optional/Required rõ ràng
-- Sắp xếp theo thứ tự thực hiện
-
----
-
-- Khi làm xong hoặc hỏi lại người hỏi hãy phát ra âm thật lớn [Console]::Beep(4000, 500) 
-
-# Bước 4: Execute Todos
-Sau khi user chốt todos:
-
-1. **Execute từng item** theo thứ tự
-2. **Update progress**: ✅ Done | 🔄 Doing | ⏳ Pending
-3. **Handle errors**: Check Troubleshooting → Try alternatives → Fallback
-4. **Validate**: Format, quality, expectations
-
----
-
-# Bước 4.5: SYNC Index (NẾU Có Skill Changes) ⚠️ CRITICAL
-
-**⚠️ BẮT BUỘC khi:**
-- Tạo skill mới
-- Update skill trong active_skill.md
-- Delete/merge skills
-- Thay đổi trigger words hoặc description
-
-**Command:**
-```bash
-python E:\Laravel\study\skill_system\.claude\skills\meta\create_skill\scripts\generate_skill_index.py
-```
-
-**Outputs:**
-- ✅ `skill_index.md` - Lightweight index (58% smaller)
-- ✅ `skills/{domain}/{skill-name}.md` - Individual skill files (61 files)
-
-**Verification:**
-```bash
-# Check skill được sync
-ls E:\Laravel\study\skill_system\.claude\hook\choose_skill.md\skills\{domain}\
-
-# Search trong index
-grep "{skill-name}" E:\Laravel\study\skill_system\.claude\hook\choose_skill.md\skill_index.md
-```
-
-**⚠️ KHÔNG BAO GIỜ SKIP bước này!** Index không sync = Skills không hoạt động đúng.
-
----
-
-# Bước 5: Complete
-1. **Present results**:
-   - ✅ Completed: {what}
-   - Outputs: {list}
-   - Suggestions: {next steps}
-
-2. **Feedback**: Satisfied? → Done | Adjust? → Iterate
----
-
-## Tips
-- Luôn phân tích task trước
-- 1 skill > 2 skills nếu đủ
-- Progressive loading (Level 1→2→3)
-- Show todos trước execute
+## Bước 4: Execute
+- Tạo todos (TodoWrite tool) nếu task phức tạp (>=3 steps)
+- Execute từng bước
+- Update todos progress
 - Handle errors gracefully
+
+## Bước 5: Complete
+- Present kết quả
+- Suggest next steps nếu có
+
+---
+
+## Notes
+- Beep khi hoàn thành: `[Console]::Beep(4000, 500)`
+- 1 skill > 2 skills nếu đủ
+- Progressive loading tiết kiệm tokens

@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """
-Generate skill_index.md from active_skill.md.
+⚠️ DEPRECATED - No longer needed after simplification ⚠️
+
+This script generated skill_index.md and split skills into individual files.
+After simplification on 2025-11-14, we now use a single active_skill.md file
+with compact format (1 bullet point per skill, max 200 chars).
+
+Legacy purpose: Generate skill_index.md from active_skill.md.
 Lightweight index for fast AI scanning - loads only matched skills on-demand.
+
+DO NOT USE. Keep for reference only.
 """
 
 import re
