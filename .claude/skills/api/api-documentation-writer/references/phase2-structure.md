@@ -1,3 +1,7 @@
+# Phase 2: Complete Documentation Structure
+
+## REST API Template
+
 ```markdown
 # [API Name] Documentation
 
@@ -19,9 +23,9 @@
 
 All requests require API key:
 
-\`\`\`
+```
 Authorization: Bearer YOUR_API_KEY
-\`\`\`
+```
 
 ## Endpoints
 
@@ -34,31 +38,31 @@ Retrieve list of resources.
 - `offset` (optional, integer): Pagination offset
 
 **Request Example**:
-\`\`\`bash
+```bash
 curl -X GET "https://api.example.com/v1/resource?limit=10" \
   -H "Authorization: Bearer YOUR_API_KEY"
-\`\`\`
+```
 
 **Response** (200 OK):
-\`\`\`json
+```json
 {
   "data": [...],
   "total": 100,
   "limit": 10
 }
-\`\`\`
+```
 
 ## Error Handling
 
 Standard error format:
-\`\`\`json
+```json
 {
   "error": {
     "code": "invalid_request",
     "message": "The 'name' field is required"
   }
 }
-\`\`\`
+```
 
 ## Support
 
@@ -66,14 +70,20 @@ Standard error format:
 - Support: [email]
 ```
 
-**GraphQL Template** (adjust để show):
+---
+
+## GraphQL Template
+
+Adjust để show:
 - Schema definitions
 - Query examples
 - Mutation examples
 - Subscription examples
 - Variables + directives
 
-### Phase 4: Documentation Best Practices
+---
+
+## Documentation Best Practices
 
 - ✅ Start với working example (copy-paste ready)
 - ✅ Show cả request và response
@@ -86,7 +96,9 @@ Standard error format:
 - ✅ Link related endpoints
 - ✅ Include changelog + versioning
 
-### Phase 5: Developer Experience Tips
+---
+
+## Developer Experience Tips
 
 - **Quick Start**: Working example trong 60 giây
 - **Postman Collection**: Include OpenAPI/Swagger spec
@@ -98,6 +110,8 @@ Standard error format:
 - **Pagination**: Show patterns
 - **Filtering & Sorting**: Explain options
 
+---
+
 ## Available Tools / Commands
 
 - **REST APIs**: Use OpenAPI/Swagger format
@@ -106,20 +120,7 @@ Standard error format:
 - **Authentication**: Clear examples cho mỗi method
 - **Code Examples**: Cung cấp JavaScript, Python, cURL
 
-## Documentation Quality Checklist
-
-- [ ] Starts with working example
-- [ ] Explains every parameter
-- [ ] Shows realistic request/response examples
-- [ ] Includes error handling
-- [ ] Provides code samples (3+ languages)
-- [ ] Uses consistent formatting
-- [ ] Organized logically (common operations first)
-- [ ] Authentication documented clearly
-- [ ] Covers edge cases + limitations
-- [ ] Follows REST/GraphQL best practices
-- [ ] Scannable with good headers
-- [ ] Interactive examples included (nếu possible)
+---
 
 ## Key Principles
 
@@ -131,23 +132,3 @@ Standard error format:
 6. **Scannable**: Headers + short descriptions cho quick lookup
 7. **Complete**: Cover happy path + edge cases
 8. **Multi-Language**: Code examples trong JavaScript, Python, cURL
-
-## Supplementary Resources
-
-For comprehensive API design principles: `read .claude/skills/api-design-principles/SKILL.md`
-
-For cache invalidation strategies: `read .claude/skills/api-cache-invalidation/SKILL.md`
-
-## Related Skills
-
-- **api-design-principles**: Sử dụng cho API design + architecture
-- **api-cache-invalidation**: Sync data giữa frontend-backend
-- **docs-seeker**: Tìm documentation reference từ internet
-
-
----
-
-## References
-
-**Common Patterns:** `read .claude/skills/api-documentation-writer/references/common-patterns.md`
-**Examples:** `read .claude/skills/api-documentation-writer/references/examples.md`

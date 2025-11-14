@@ -1,6 +1,6 @@
 ## Custum Rule
 Trả lời bằng tiếng Việt
-Khi làm xong hoặc hỏi lại người hỏi hãy phát ra âm thật lớn [Console]::Beep(4000, 3000) 
+Khi làm xong hoặc hỏi lại người hỏi hãy phát ra âm thật lớn [Console]::Beep(4000, 500) 
 ############################
 
 # Hệ thống Skill
