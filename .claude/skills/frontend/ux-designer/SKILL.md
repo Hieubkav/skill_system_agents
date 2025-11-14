@@ -1,6 +1,6 @@
 ---
-name: ux-designer
-description: Expert UI/UX design guidance for building unique, accessible, and user-centered interfaces. Use when designing interfaces, making visual design decisions, choosing colors/typography/layouts, implementing responsive design, or improving accessibility. Triggers include design, UI, UX, styling, visual, appearance, colors, fonts, typography, layouts, spacing, responsive, mobile, accessibility, WCAG, user interface, user experience, thiết kế giao diện, thiết kế UI/UX.
+name: UX Designer
+description: Expert UI/UX design guidance for building unique, accessible, and user-centered interfaces. Use when designing interfaces, making visual design decisions, choosing colors/typography, implementing responsive layouts, or when user mentions design, UI, UX, styling, or visual appearance. Always ask before making design decisions.
 version: 1.0.0
 ---
 ## Core Philosophy
@@ -164,7 +164,7 @@ For additional context, see:
 
 ## References
 
-**Visual Design Standards:** `read .claude/skills/frontend/ux-designer/references/visual-design-standards.md`
-**Interaction Design:** `read .claude/skills/frontend/ux-designer/references/interaction-design.md`
-**Styling Implementation:** `read .claude/skills/frontend/ux-designer/references/styling-implementation.md`
-**Examples:** `read .claude/skills/frontend/ux-designer/references/examples.md`
+**Visual Design Standards:** `read .claude/skills/fullstack/ux-designer/references/visual-design-standards.md`
+**Interaction Design:** `read .claude/skills/fullstack/ux-designer/references/interaction-design.md`
+**Styling Implementation:** `read .claude/skills/fullstack/ux-designer/references/styling-implementation.md`
+**Examples:** `read .claude/skills/fullstack/ux-designer/references/examples.md`
