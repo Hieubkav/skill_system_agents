@@ -32,11 +32,11 @@ Skill này giúp bạn tạo ra các Agent Skills có cấu trúc tốt cho AI A
 
 ```bash
 # 1. Xác định group skill và tạo structure
-mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/reference
+mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 
 # 2. Tạo SKILL.md với frontmatter (name, description)
 # 3. Tạo README.md (<100 ký tự)
-# 4. Tạo reference files nếu cần (workflow, examples, validation)
+# 4. Tạo references files nếu cần (workflow, examples, validation)
 # 5. Validate YAML, structure, content
 # 6. Test activation với trigger words
 # 7. Đăng ký vào active_skill.md
@@ -45,9 +45,9 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/reference
 ### Key Principles
 
 - **One Skill = One Capability** - Focused, không tạo mega-skills
-- **SKILL.md < 200 dòng** - Content chính ngắn gọn, details trong reference/
+- **SKILL.md < 200 dòng** - Content chính ngắn gọn, details trong references/
 - **README.md < 100 ký tự** - Mô tả human-readable
-- **Reference files < 300 dòng** - Mỗi file 1 tính năng
+- **References files < 300 dòng** - Mỗi file 1 tính năng
 - **Trigger words** - Both Vietnamese và English, 5-10 triggers
 - **Register immediately** - Đăng ký vào active_skill.md ngay sau khi tạo
 
@@ -55,10 +55,10 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/reference
 
 ## Level 3: Reference Guides
 
-- [workflow.md](./reference/workflow.md) - Use when: Cần 11 steps chi tiết để tạo skill
-- [validation.md](./reference/validation.md) - Use when: Cần kiểm tra skill có đúng chuẩn không
-- [examples.md](./reference/examples.md) - Use when: Cần tham khảo ví dụ skill mẫu
-- [registration.md](./reference/registration.md) - Use when: Cần đăng ký skill vào active_skill.md hoặc update registration
+- [workflow.md](./references/workflow.md) - Use when: Cần 11 steps chi tiết để tạo skill
+- [validation.md](./references/validation.md) - Use when: Cần kiểm tra skill có đúng chuẩn không
+- [examples.md](./references/examples.md) - Use when: Cần tham khảo ví dụ skill mẫu
+- [registration.md](./references/registration.md) - Use when: Cần đăng ký skill vào active_skill.md hoặc update registration
 
 ---
 
@@ -68,7 +68,7 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/reference
 ~/.claude/skills/{group-skill-name}/{skill-name}/
 ├── SKILL.md         # REQUIRED: <200 dòng
 ├── README.md        # REQUIRED: <100 ký tự
-├── reference/       # Optional: Chi tiết
+├── references/      # Optional: Chi tiết
 │   ├── workflow.md
 │   ├── examples.md
 │   └── features.md  # Max 300 dòng, >100 dòng thêm TOC
@@ -113,7 +113,7 @@ Brief 2-3 sentence description.
 ---
 
 ## Level 3: Reference Guides
-- [guide.md](./reference/guide.md) - Use when: context
+- [guide.md](./references/guide.md) - Use when: context
 
 ---
 
@@ -188,7 +188,7 @@ description: Extract text and tables from PDF files, fill forms, merge documents
 
 ### Case 3: Tạo Multi-File Skill
 - SKILL.md (<200 dòng) với overview và quick start
-- reference/ chứa detailed guides
+- references/ chứa detailed guides
 - Progressive disclosure: workflow.md, examples.md, validation.md
 
 ---
@@ -196,7 +196,7 @@ description: Extract text and tables from PDF files, fill forms, merge documents
 ## Best Practices
 
 1. **One Skill, one purpose** - Focused skills activate reliably
-2. **SKILL.md < 200 dòng** - Move details to reference/
+2. **SKILL.md < 200 dòng** - Move details to references/
 3. **Specific descriptions** - Include trigger words users will say
 4. **Clear instructions** - Viết cho AI AGENT, not humans
 5. **Register immediately** - Đăng ký vào active_skill.md NGAY sau khi tạo
@@ -225,7 +225,7 @@ Khi tạo một Skill, tôi sẽ:
 2. ✅ Suggest skill name và location (group skill)
 3. ✅ Tạo SKILL.md với proper frontmatter (<200 dòng)
 4. ✅ Include clear instructions và examples
-5. ✅ Add supporting files nếu cần (README, reference/, assets/, scripts/)
+5. ✅ Add supporting files nếu cần (README, references/, assets/, scripts/)
 6. ✅ **Đăng ký skill vào active_skill.md với trigger words**
 7. ✅ Validate against all requirements (YAML, structure, content)
 8. ✅ Test skill activation với trigger words
