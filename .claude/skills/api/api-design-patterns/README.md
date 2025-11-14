@@ -1,3 +1,3 @@
 # API Design Patterns
 
-REST and GraphQL API design, authentication, security, and best practices.
+Thiết kế API REST và GraphQL, xác thực, bảo mật và các best practices.

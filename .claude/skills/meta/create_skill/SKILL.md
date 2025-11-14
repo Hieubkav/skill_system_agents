@@ -46,7 +46,7 @@ mkdir -p ~/.claude/skills/{group-skill-name}/{skill-name}/references
 
 - **One Skill = One Capability** - Focused, không tạo mega-skills
 - **SKILL.md < 200 dòng** - Content chính ngắn gọn, details trong references/
-- **README.md < 100 ký tự** - Mô tả human-readable
+- **README.md < 100 ký tự** - Mô tả human-readable, và dùng tiếng Việt
 - **References files < 300 dòng** - Mỗi file 1 tính năng
 - **Trigger words** - Both Vietnamese và English, 5-10 triggers
 - **Register immediately** - Đăng ký vào active_skill.md ngay sau khi tạo
