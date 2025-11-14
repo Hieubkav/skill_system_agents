@@ -6,13 +6,13 @@
 1. Scan this index for matching keywords/triggers
 2. Load full skill details from: `.claude/hook/choose_skill.md/skills/{domain}/{skill-name}.md`
 
-**Stats**: 42 skills across 16 domains
+**Stats**: 60 skills across 19 domains
 
 ---
 
 ## Quick Reference by Domain
 
-### API (3 skills)
+### API (4 skills)
 
 **api-cache-invalidation**  
 Automatic cache invalidation system với Laravel Observers và Next.js On-Demand Revalidation  
@@ -29,6 +29,18 @@ Generate comprehensive API documentation for REST, GraphQL, WebSocket APIs with 
 🔍 "viết document API", "tạo API docs", "generate API documentation"  
 📂 `\.claude\skills\api\api-documentation-writer`
 
+**api-contracts-generator**  
+Génère des contrats API cohérents entre Frontend (Next.js) et Backend (NestJS) avec types synchronisés, validation standardisée et error handling u...  
+🔍 "api", "api contracts generator", "backend"  
+📂 `\.claude\skills\api\api-contracts-generator`
+
+### ARCHITECTURE (1 skills)
+
+**clean-architecture**  
+Clean Architecture principles including layered architecture, dependency rule, and domain-driven design patterns  
+🔍 "architecture", "backend", "clean"  
+📂 `\.claude\skills\architecture\clean-architecture`
+
 ### AUTH (1 skills)
 
 **auth-implementation-patterns**  
@@ -36,7 +48,7 @@ Master authentication and authorization patterns including JWT, OAuth2, session 
 🔍 "authentication", "xác thực", "authorization"  
 📂 `\.claude\skills\auth\auth-implementation-patterns`
 
-### BACKEND (2 skills)
+### BACKEND (4 skills)
 
 **backend-dev-guidelines**  
 Node.js/Express/TypeScript microservices development  
@@ -47,6 +59,16 @@ Node.js/Express/TypeScript microservices development
 Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling  
 🔍 "FastAPI", "Python backend", "async API"  
 📂 `\.claude\skills\backend\fastapi-templates`
+
+**backend-dev-guidelines**  
+Comprehensive backend development guide for Langfuse's Next.js 14/tRPC/Express/TypeScript monorepo  
+🔍 "api", "backend", "backend-dev-guidelines"  
+📂 `\.claude\skills\backend\backend-dev-guidelines`
+
+**email-service-integration**  
+Integrate email services with backends using SMTP, third-party providers, templates, and asynchronous sending  
+🔍 "asynchronous", "backend", "email"  
+📂 `\.claude\skills\backend\email-service-integration`
 
 ### CODE_REVIEW (1 skills)
 
@@ -91,7 +113,7 @@ Use when complex problems require systematic step-by-step reasoning with ability
 🔍 "sequential thinking", "step-by-step reasoning", "problem decomposition"  
 📂 `\.claude\skills\critical_thinking\sequential-thinking`
 
-### DATABASE (8 skills)
+### DATABASE (9 skills)
 
 **database-schema-diff**  
 Leverages database-diff-tool plugin to compare schemas, generate migration scripts, and provide rollback procedures for PostgreSQL/MySQL  
@@ -133,11 +155,31 @@ Master database and SQL query optimization through index analysis, EXPLAIN plans
 🔍 "optimize database", "tối ưu database", "slow query"  
 📂 `\.claude\skills\database\database-performance-optimization`
 
-### DEBUG (1 skills)
+**discover-database**  
+Automatically discover database skills when working with SQL, PostgreSQL, MongoDB, Redis, database schema design, query optimization, migrations, c...  
+🔍 "database", "design", "discover"  
+📂 `\.claude\skills\database\discover-database`
+
+### DEBUG (4 skills)
 
 **systematic-debugging**  
 Four-phase debugging framework ensuring root cause investigation before fixes  
 🔍 "debugging", "debug", "gỡ lỗi"  
+📂 `\.claude\skills\debug\systematic-debugging`
+
+**chrome-devtools**  
+Browser automation, debugging, and performance analysis using Puppeteer CLI scripts  
+🔍 "analyzing", "automation", "browser"  
+📂 `\.claude\skills\debug\chrome-devtools`
+
+**root-cause-tracing**  
+Systematically trace bugs backward through call stack to find original trigger  
+🔍 "backward", "bugs", "debugging"  
+📂 `\.claude\skills\debug\root-cause-tracing`
+
+**systematic-debugging**  
+Four-phase debugging framework that ensures root cause investigation before attempting fixes  
+🔍 "attempting", "cause", "debugging"  
 📂 `\.claude\skills\debug\systematic-debugging`
 
 ### DOCUMENTS (2 skills)
@@ -169,7 +211,7 @@ Automated Filament 4.x resource generation following coding standards (Schema na
 🔍 "tạo resource mới", "create new resource", "generate Filament resource"  
 📂 `\.claude\skills\filament\filament-resource-generator`
 
-### FRAMEWORK (4 skills)
+### FRAMEWORK (6 skills)
 
 **laravel**  
 Laravel v12 - The PHP Framework For Web Artisans  
@@ -191,7 +233,17 @@ Use this skill for Next.js App Router patterns, Server Components, Server Action
 🔍 "Next.js", "Next.js 16", "App Router"  
 📂 `\.claude\skills\framework\nextjs`
 
-### FRONTEND (6 skills)
+**state-management-patterns**  
+Comprehensive guide to choosing and implementing state management solutions in React applications - Redux Toolkit, Zustand, Context API, MobX, Reco...  
+🔍 "api", "applications", "choosing"  
+📂 `\.claude\skills\framework\state-management-patterns`
+
+**tanstack-query**  
+Expert guidance for TanStack Query (React Query) including queries, mutations, caching, invalidation, optimistic updates, pagination, and infinite ...  
+🔍 "applications", "caching", "infinite"  
+📂 `\.claude\skills\framework\tanstack-query`
+
+### FRONTEND (9 skills)
 
 **frontend-dev-guidelines**  
 Frontend development guidelines covering component patterns, file organization, data fetching, loading/error states, performance, routing, styling,...  
@@ -223,6 +275,21 @@ Create beautiful, accessible user interfaces with shadcn/ui components (Radix UI
 🔍 "shadcn/ui", "shadcn", "Radix UI"  
 📂 `\.claude\skills\frontend\ui-styling`
 
+**frontend-design**  
+Create distinctive, production-grade frontend interfaces with high design quality  
+🔍 "applications", "build", "component"  
+📂 `\.claude\skills\frontend\frontend-design`
+
+**frontend-engineer**  
+Expert frontend engineering with simplified pragmatic architecture, React 19, TanStack ecosystem, and Zustand state management  
+🔍 "api", "architecture", "engineering"  
+📂 `\.claude\skills\frontend\frontend-engineer`
+
+**ui-component-workflow**  
+Generate production-ready React components with TypeScript, TailwindCSS, Framer Motion animations, and Radix UI  
+🔍 "accessibility", "animations", "component"  
+📂 `\.claude\skills\frontend\ui-component-workflow`
+
 ### META (1 skills)
 
 **create-skill**  
@@ -230,7 +297,7 @@ Tạo Agent Skills mới cho AI AGENT theo đúng chuẩn và best practices
 🔍 "tạo skill", "viết skill", "create skill"  
 📂 `\.claude\skills\meta\create-skill`
 
-### OPTIMIZE (2 skills)
+### OPTIMIZE (4 skills)
 
 **cache-optimization**  
 Analyze and improve application caching strategies  
@@ -242,7 +309,31 @@ Conduct comprehensive web performance audits
 🔍 "performance audit", "web performance", "page speed"  
 📂 `\.claude\skills\optimize\web-performance-audit`
 
-### TESTING (2 skills)
+**caching-strategy**  
+Implement efficient caching strategies using Redis, Memcached, CDN, and cache invalidation patterns  
+🔍 "cache", "caching", "caching-strategy"  
+📂 `\.claude\skills\optimize\caching-strategy`
+
+**seo-expert**  
+Elite SEO expertise covering technical optimization, Core Web Vitals, E-E-A-T, topic clusters, entity-based SEO, semantic search, advanced link bui...  
+🔍 "audits", "building", "clusters"  
+📂 `\.claude\skills\optimize\seo-expert`
+
+### OTHER (1 skills)
+
+**framer-expert**  
+Expert in Framer design and development - from interactive prototypes to production sites with Framer Motion, CMS integration, and the Framer MCP s...  
+🔍 "cms", "design", "development"  
+📂 ``
+
+### SECURITY (1 skills)
+
+**defense-in-depth**  
+Validate at every layer data passes through to make bugs impossible  
+🔍 "bugs", "defense", "defense-in-depth"  
+📂 `\.claude\skills\security\defense-in-depth`
+
+### TESTING (3 skills)
 
 **qa-verification**  
 Comprehensive truth scoring, code quality verification, and automatic rollback system with 0.95 accuracy threshold for ensuring high-quality agent ...  
@@ -253,6 +344,11 @@ Comprehensive truth scoring, code quality verification, and automatic rollback s
 Complete E2E testing and browser automation with Playwright  
 🔍 "E2E testing", "end-to-end testing", "Playwright"  
 📂 `\.claude\skills\testing\playwright-e2e-testing`
+
+**verification-before-completion**  
+Run verification commands and confirm output before claiming success  
+🔍 "before", "claiming", "commands"  
+📂 `\.claude\skills\testing\verification-before-completion`
 
 ---
 

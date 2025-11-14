@@ -1,0 +1,1 @@
+Systematically trace bugs backward through call stack to find original trigger

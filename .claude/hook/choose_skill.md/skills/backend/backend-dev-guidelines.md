@@ -1,20 +1,19 @@
 ## Skill backend-dev-guidelines:
 
 - Đường dẫn: \.claude\skills\backend\backend-dev-guidelines
-- Mô tả: Node.js/Express/TypeScript microservices development. Layered architecture (routes → controllers → services → repositories), BaseController, error handling, Sentry monitoring, Prisma, Zod validation, dependency injection. USE WHEN creating routes, controllers, services, repositories, middleware, API endpoints, database access, error tracking.
+- Mô tả: Comprehensive backend development guide for Langfuse's Next.js 14/tRPC/Express/TypeScript monorepo. Use when creating tRPC routers, public API endpoints, BullMQ queue processors, services, or working with tRPC procedures, Next.js API routes, Prisma database access, ClickHouse analytics queries, Redis queues, OpenTelemetry instrumentation, Zod v4 validation, env.mjs configuration, tenant isolation patterns, or async patterns. Covers layered architecture (tRPC procedures → services, queue processors → services), dual database system (PostgreSQL + ClickHouse), projectId filtering for multi-tenant isolation, traceException error handling, observability patterns, and testing strategies (Jest for web, vitest for worker).
 - Lời gọi kích hoạt:
-  - "backend development"
-  - "phát triển backend"
-  - "Node.js"
-  - "Express"
-  - "TypeScript backend"
-  - "microservices"
-  - "API endpoints"
-  - "controllers"
-  - "services"
-  - "repositories"
-  - "Prisma"
-  - "Zod validation"
-  - "error handling"
-  - "Sentry"
+  - "api"
+  - "backend"
+  - "backend-dev-guidelines"
+  - "bullmq"
+  - "clickhouse"
+  - "database"
+  - "express"
+  - "next.js"
+  - "postgresql"
+  - "prisma"
+  - "trpc"
+  - "typescript"
+  - "validation"
 

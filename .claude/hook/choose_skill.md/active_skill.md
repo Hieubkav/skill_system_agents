@@ -701,3 +701,319 @@
   - "Tailwind dark mode"
   - "Tailwind responsive"
   - "Tailwind customization"
+## Skill api-contracts-generator:
+- Đường dẫn: \.claude\skills\api\api-contracts-generator
+- Mô tả: Génère des contrats API cohérents entre Frontend (Next.js) et Backend (NestJS) avec types synchronisés, validation standardisée et error handling uniforme. À utiliser lors de la création d'APIs, DTOs, types frontend/backend, ou quand l'utilisateur mentionne "API", "DTO", "types", "contract", "validation", "frontend-backend", "synchronisation".
+- Lời gọi kích hoạt:
+  - "api"
+  - "api contracts generator"
+  - "backend"
+  - "contract"
+  - "dto"
+  - "frontend"
+  - "frontend-backend"
+  - "synchronisation"
+  - "types"
+  - "validation"
+
+## Skill backend-dev-guidelines:
+- Đường dẫn: \.claude\skills\backend\backend-dev-guidelines
+- Mô tả: Comprehensive backend development guide for Langfuse's Next.js 14/tRPC/Express/TypeScript monorepo. Use when creating tRPC routers, public API endpoints, BullMQ queue processors, services, or working with tRPC procedures, Next.js API routes, Prisma database access, ClickHouse analytics queries, Redis queues, OpenTelemetry instrumentation, Zod v4 validation, env.mjs configuration, tenant isolation patterns, or async patterns. Covers layered architecture (tRPC procedures → services, queue processors → services), dual database system (PostgreSQL + ClickHouse), projectId filtering for multi-tenant isolation, traceException error handling, observability patterns, and testing strategies (Jest for web, vitest for worker).
+- Lời gọi kích hoạt:
+  - "api"
+  - "backend"
+  - "backend-dev-guidelines"
+  - "bullmq"
+  - "clickhouse"
+  - "database"
+  - "express"
+  - "next.js"
+  - "postgresql"
+  - "prisma"
+  - "trpc"
+  - "typescript"
+  - "validation"
+
+## Skill caching-strategy:
+- Đường dẫn: \.claude\skills\optimize\caching-strategy
+- Mô tả: Implement efficient caching strategies using Redis, Memcached, CDN, and cache invalidation patterns. Use when optimizing application performance, reducing database load, or improving response times.
+- Lời gọi kích hoạt:
+  - "cache"
+  - "caching"
+  - "caching-strategy"
+  - "cdn"
+  - "database"
+  - "invalidation"
+  - "memcached"
+  - "optimization"
+  - "patterns"
+  - "performance"
+  - "redis"
+
+## Skill clean-architecture:
+- Đường dẫn: \.claude\skills\architecture\clean-architecture
+- Mô tả: Clean Architecture principles including layered architecture, dependency rule, and domain-driven design patterns. **ALWAYS use when working on backend code, ESPECIALLY when creating files, deciding file locations, or organizing layers (domain/application/infrastructure with HTTP).** Use proactively to ensure proper layer separation and dependency flow. Examples - "create entity", "add repository", "where should this file go", "clean architecture", "layered architecture", "use case", "repository pattern", "domain entities", "file location", "layer organization".
+- Lời gọi kích hoạt:
+  - "architecture"
+  - "backend"
+  - "clean"
+  - "clean-architecture"
+  - "dependency"
+  - "design"
+  - "domain"
+  - "domain-driven"
+  - "entities"
+  - "layered"
+  - "patterns"
+  - "repository"
+
+## Skill defense-in-depth:
+- Đường dẫn: \.claude\skills\security\defense-in-depth
+- Mô tả: Validate at every layer data passes through to make bugs impossible
+- Lời gọi kích hoạt:
+  - "bugs"
+  - "defense"
+  - "defense-in-depth"
+  - "impossible"
+  - "security"
+  - "validate"
+  - "validation"
+
+## Skill discover-database:
+- Đường dẫn: \.claude\skills\database\discover-database
+- Mô tả: Automatically discover database skills when working with SQL, PostgreSQL, MongoDB, Redis, database schema design, query optimization, migrations, connection pooling, ORMs, or database selection. Activates for database design, optimization, and implementation tasks.
+- Lời gọi kích hoạt:
+  - "database"
+  - "design"
+  - "discover"
+  - "discover-database"
+  - "migration"
+  - "mongodb"
+  - "optimization"
+  - "postgresql"
+  - "redis"
+  - "schema"
+  - "selection"
+
+## Skill email-service-integration:
+- Đường dẫn: \.claude\skills\backend\email-service-integration
+- Mô tả: Integrate email services with backends using SMTP, third-party providers, templates, and asynchronous sending. Use when implementing email functionality, sending transactional emails, and managing email workflows.
+- Lời gọi kích hoạt:
+  - "asynchronous"
+  - "backend"
+  - "email"
+  - "email-service-integration"
+  - "functionality"
+  - "integration"
+  - "sending"
+  - "services"
+  - "smtp"
+  - "templates"
+  - "transactional"
+  - "workflows"
+
+## Skill framer-expert:
+- Đường dẉn: \.claude\skills\framework\framer-expert
+- Mô tả: Expert in Framer design and development - from interactive prototypes to production sites with Framer Motion, CMS integration, and the Framer MCP server
+- Lời gọi kích hoạt:
+  - "cms"
+  - "design"
+  - "development"
+  - "framer"
+  - "framer-expert"
+  - "interactive"
+  - "motion"
+  - "production"
+  - "prototypes"
+  - "server"
+
+## Skill frontend-design:
+- Đường dẫn: \.claude\skills\frontend\frontend-design
+- Mô tả: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
+- Lời gọi kích hoạt:
+  - "applications"
+  - "build"
+  - "component"
+  - "creative"
+  - "design"
+  - "distinctive"
+  - "frontend"
+  - "frontend-design"
+  - "interfaces"
+  - "pages"
+  - "production"
+  - "quality"
+
+## Skill frontend-engineer:
+- Đường dẫn: \.claude\skills\frontend\frontend-engineer
+- Mô tả: Expert frontend engineering with simplified pragmatic architecture, React 19, TanStack ecosystem, and Zustand state management. **ALWAYS use when implementing ANY frontend features.** Use when setting up project structure, creating pages and state management, designing gateway injection patterns, setting up HTTP communication and routing, organizing feature modules, or optimizing performance. **ALWAYS use when implementing Gateway Pattern (Interface + HTTP + Fake), Context API injection, Zustand stores, TanStack Router, or feature-based architecture.**
+- Lời gọi kích hoạt:
+  - "api"
+  - "architecture"
+  - "engineering"
+  - "frontend"
+  - "frontend-engineer"
+  - "gateway"
+  - "http"
+  - "injection"
+  - "interface"
+  - "patterns"
+  - "performance"
+  - "react"
+  - "tanstack"
+  - "zustand"
+
+## Skill chrome-devtools:
+- Đường dẫn: \.claude\skills\debug\chrome-devtools
+- Mô tả: Browser automation, debugging, and performance analysis using Puppeteer CLI scripts. Use for automating browsers, taking screenshots, analyzing performance, monitoring network traffic, web scraping, form automation, and JavaScript debugging.
+- Lời gọi kích hoạt:
+  - "analyzing"
+  - "automation"
+  - "browser"
+  - "chrome"
+  - "chrome-devtools"
+  - "debugging"
+  - "devtools"
+  - "javascript"
+  - "monitoring"
+  - "network"
+  - "performance"
+  - "puppeteer"
+  - "screenshots"
+  - "scraping"
+  - "traffic"
+
+## Skill root-cause-tracing:
+- Đường dẫn: \.claude\skills\debug\root-cause-tracing
+- Mô tả: Systematically trace bugs backward through call stack to find original trigger
+- Lời gọi kích hoạt:
+  - "backward"
+  - "bugs"
+  - "debugging"
+  - "find"
+  - "original"
+  - "root"
+  - "root-cause-tracing"
+  - "stack"
+  - "systematically"
+  - "trace"
+  - "tracing"
+  - "trigger"
+
+## Skill seo-expert:
+- Đường dẫn: \.claude\skills\optimize\seo-expert
+- Mô tả: Elite SEO expertise covering technical optimization, Core Web Vitals, E-E-A-T, topic clusters, entity-based SEO, semantic search, advanced link building, AI/ML integration, and sustainable ranking strategies for 2025. Use for comprehensive SEO audits, strategy development, content optimization, and technical implementation.
+- Lời gọi kích hoạt:
+  - "audits"
+  - "building"
+  - "clusters"
+  - "content"
+  - "core web vitals"
+  - "entity"
+  - "integration"
+  - "optimization"
+  - "ranking"
+  - "search"
+  - "semantic"
+  - "seo"
+  - "seo-expert"
+  - "strategy"
+  - "technical"
+
+## Skill state-management-patterns:
+- Đường dẫn: \.claude\skills\framework\state-management-patterns
+- Mô tả: Comprehensive guide to choosing and implementing state management solutions in React applications - Redux Toolkit, Zustand, Context API, MobX, Recoil, and React Query
+- Lời gọi kích hoạt:
+  - "api"
+  - "applications"
+  - "choosing"
+  - "implementing"
+  - "management"
+  - "mobx"
+  - "patterns"
+  - "query"
+  - "react"
+  - "recoil"
+  - "redux"
+  - "solutions"
+  - "state"
+  - "state-management-patterns"
+  - "zustand"
+
+## Skill systematic-debugging:
+- Đường dẫn: \.claude\skills\debug\systematic-debugging
+- Mô tả: Four-phase debugging framework that ensures root cause investigation before attempting fixes. Never jump to solutions.
+- Lời gọi kích hoạt:
+  - "attempting"
+  - "cause"
+  - "debugging"
+  - "ensures"
+  - "fixes"
+  - "framework"
+  - "investigation"
+  - "never"
+  - "phase"
+  - "root"
+  - "solutions"
+  - "systematic"
+  - "systematic-debugging"
+
+## Skill tanstack-query:
+- Đường dẫn: \.claude\skills\framework\tanstack-query
+- Mô tả: Expert guidance for TanStack Query (React Query) including queries, mutations, caching, invalidation, optimistic updates, pagination, and infinite queries. Use this when managing server state in React applications.
+- Lời gọi kích hoạt:
+  - "applications"
+  - "caching"
+  - "infinite"
+  - "invalidation"
+  - "managing"
+  - "mutations"
+  - "optimistic"
+  - "pagination"
+  - "queries"
+  - "query"
+  - "react"
+  - "server"
+  - "state"
+  - "tanstack"
+  - "tanstack-query"
+
+## Skill ui-component-workflow:
+- Đường dẫn: \.claude\skills\frontend\ui-component-workflow
+- Mô tả: Generate production-ready React components with TypeScript, TailwindCSS, Framer Motion animations, and Radix UI. Includes accessibility compliance (WCAG 2.1 AA), responsive design, and dark mode support. Use when creating new UI features or refactoring components.
+- Lời gọi kích hoạt:
+  - "accessibility"
+  - "animations"
+  - "component"
+  - "components"
+  - "creating"
+  - "dark mode"
+  - "design"
+  - "features"
+  - "framer"
+  - "motion"
+  - "production"
+  - "radix"
+  - "react"
+  - "refactoring"
+  - "responsive"
+  - "tailwindcss"
+  - "typescript"
+  - "ui"
+  - "ui-component-workflow"
+  - "wcag"
+
+## Skill verification-before-completion:
+- Đường dẫn: \.claude\skills\testing\verification-before-completion
+- Mô tả: Run verification commands and confirm output before claiming success
+- Lời gọi kích hoạt:
+  - "before"
+  - "claiming"
+  - "commands"
+  - "completion"
+  - "confirm"
+  - "output"
+  - "success"
+  - "testing"
+  - "verification"
+  - "verification-before-completion"

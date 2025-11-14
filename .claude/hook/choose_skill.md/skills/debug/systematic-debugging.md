@@ -1,15 +1,19 @@
 ## Skill systematic-debugging:
 
 - Đường dẫn: \.claude\skills\debug\systematic-debugging
-- Mô tả: Four-phase debugging framework ensuring root cause investigation before fixes. Never jump to solutions. USE WHEN encountering bugs, test failures, unexpected behavior, or when fixes fail repeatedly.
+- Mô tả: Four-phase debugging framework that ensures root cause investigation before attempting fixes. Never jump to solutions.
 - Lời gọi kích hoạt:
+  - "attempting"
+  - "cause"
   - "debugging"
-  - "debug"
-  - "gỡ lỗi"
-  - "bug fixing"
-  - "troubleshooting"
-  - "root cause"
-  - "systematic debugging"
-  - "test failures"
-  - "unexpected behavior"
+  - "ensures"
+  - "fixes"
+  - "framework"
+  - "investigation"
+  - "never"
+  - "phase"
+  - "root"
+  - "solutions"
+  - "systematic"
+  - "systematic-debugging"
 
