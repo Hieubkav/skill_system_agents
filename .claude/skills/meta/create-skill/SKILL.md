@@ -72,7 +72,18 @@ mkdir -p .claude/skills/{group}/{skill-name}/references
 ├── README.md        # Bắt buộc: <100 ký tự, tiếng Việt
 ├── references/      # Tùy chọn: Chi tiết
 │   ├── workflow.md
-│   └── examples.md
+│   ├── examples.md
+|   ├── feature1.md
+|   ├── feature2.md
+|   ├── feature3.md
+|   ├── advanced_feature.md
+|   ├── template.md
+|
+├── assets/
+│   ├── font (file)
+│   ├── image.png
+|   ├── icon.svg
+|
 └── scripts/         # Tùy chọn: Scripts hỗ trợ
 ```
 

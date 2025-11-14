@@ -38,6 +38,8 @@
 
 - **auth-implementation-patterns**: Authentication và authorization patterns với JWT, OAuth2, session management, RBAC. Dùng khi implement auth systems. `\.claude\skills\auth\auth-implementation-patterns` | Triggers: "authentication", "authorization", "JWT"
 
+- **better-auth**: Production-ready authentication cho TypeScript với Cloudflare D1 (Drizzle/Kysely). Thay thế tự host cho Clerk hay Auth.js. `\.claude\skills\auth\better-auth` | Triggers: "better-auth", "D1 authentication", "self-hosted auth", "Cloudflare auth", "alternative to Clerk", "OAuth với Cloudflare", "2FA authentication", "passkeys", "magic links"
+
 - **backend-dev-guidelines**: Node.js/Express/TypeScript microservices. Layered architecture (routes→controllers→services→repositories), Prisma, Zod validation. `\.claude\skills\backend\backend-dev-guidelines` | Triggers: "backend development", "Node.js", "microservices"
 
 - **fastapi-templates**: Production-ready FastAPI projects với async patterns, dependency injection, error handling. `\.claude\skills\backend\fastapi-templates` | Triggers: "FastAPI", "Python backend", "async API"
