@@ -175,11 +175,43 @@ Khi tạo một Skill, tôi sẽ:
 7. ✅ **Đăng ký skill vào active_skill.md với trigger words**
 8. ✅ Validate against all requirements (YAML, structure, content)
 9. ✅ Test skill activation với trigger words
-10. ✅ **AUTO-UPDATE INDEX** - Chạy `generate_skill_index.py` để sync skill_index.md và skills/ folder
+10. ✅ **🔴 AUTO-SYNC INDEX (MANDATORY!)** - KHÔNG BAO GIỜ SKIP bước này!
 
-**CRITICAL**: Sau mỗi skill change (create/update/merge/delete), PHẢI chạy:
+---
+
+## 🔴 CRITICAL FINAL STEP - SYNC INDEX
+
+**⚠️ MANDATORY sau EVERY skill change:**
+
 ```bash
-python .claude/skills/meta/create_skill/scripts/generate_skill_index.py
+python E:\Laravel\study\skill_system\.claude\skills\meta\create_skill\scripts\generate_skill_index.py
 ```
 
-Kết quả: một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, index đã sync, không duplicate, tuân thủ tất cả best practices và validation rules.
+**Verifications sau khi chạy:**
+- ✅ Script output: "Created X skill files"
+- ✅ Check file exists: `skills/{domain}/{skill-name}.md`
+- ✅ Grep trong index: skill name xuất hiện
+- ✅ File size: skill_index.md ~16KB (not 38KB)
+
+**⚠️ NẾU SKIP bước này:**
+- ❌ Skill KHÔNG xuất hiện trong index
+- ❌ AI KHÔNG thể load skill
+- ❌ System KHÔNG sync
+- ❌ Skills/ folder KHÔNG update
+
+**💡 Reminder Checklist:**
+```
+Trước khi kết thúc:
+□ Đã tạo/update skill?
+□ Đã register trong active_skill.md?
+□ ⚠️ ĐÃ CHẠY generate_skill_index.py? (MANDATORY!)
+□ Đã verify output: "Created X skill files"?
+□ Đã check skills/{domain}/ có file mới?
+
+Nếu TẤT CẢ = YES → Complete ✅
+Nếu BẤT KỲ = NO → CHƯA XONG!
+```
+
+---
+
+**Kết quả cuối cùng:** Một Skill hoàn chỉnh, working, đã đăng ký trong active_skill.md, **index đã sync**, không duplicate, tuân thủ tất cả best practices và validation rules.

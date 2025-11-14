@@ -89,6 +89,36 @@ Sau khi user chốt todos:
 
 ---
 
+# Bước 4.5: SYNC Index (NẾU Có Skill Changes) ⚠️ CRITICAL
+
+**⚠️ BẮT BUỘC khi:**
+- Tạo skill mới
+- Update skill trong active_skill.md
+- Delete/merge skills
+- Thay đổi trigger words hoặc description
+
+**Command:**
+```bash
+python E:\Laravel\study\skill_system\.claude\skills\meta\create_skill\scripts\generate_skill_index.py
+```
+
+**Outputs:**
+- ✅ `skill_index.md` - Lightweight index (58% smaller)
+- ✅ `skills/{domain}/{skill-name}.md` - Individual skill files (61 files)
+
+**Verification:**
+```bash
+# Check skill được sync
+ls E:\Laravel\study\skill_system\.claude\hook\choose_skill.md\skills\{domain}\
+
+# Search trong index
+grep "{skill-name}" E:\Laravel\study\skill_system\.claude\hook\choose_skill.md\skill_index.md
+```
+
+**⚠️ KHÔNG BAO GIỜ SKIP bước này!** Index không sync = Skills không hoạt động đúng.
+
+---
+
 # Bước 5: Complete
 1. **Present results**:
    - ✅ Completed: {what}

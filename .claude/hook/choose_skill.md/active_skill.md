@@ -220,7 +220,7 @@
 
 ## Skill image-management:
 - Đường dẫn: \.claude\skills\filament\image-management
-- Mô tả: Centralized polymorphic image management with CheckboxList picker, WebP auto-conversion, order management (order=0 for cover), soft deletes. USE WHEN adding images/gallery to models, implementing image upload, working with ImagesRelationManager, or fixing image errors.
+- Mô tả: Centralized polymorphic image management with CheckboxList picker, WebP auto-conversion, order management (order=0 for cover), soft deletes, bulk operations, and advanced Filament 4.x integrations. USE WHEN adding images/gallery to models, implementing image upload, working with ImagesRelationManager, bulk image actions, or fixing image errors.
 - Lời gọi kích hoạt:
   - "image management"
   - "quản lý ảnh"
@@ -235,6 +235,30 @@
   - "lỗi ảnh"
   - "featured image"
   - "ảnh đại diện"
+  - "bulk image"
+  - "optimize images"
+
+## Skill filament-widgets-infolists:
+- Đường dẫn: \.claude\skills\filament\filament-widgets-infolists
+- Mô tả: Master Filament 4.x Widgets and Infolists - create dynamic dashboards, stats widgets, chart widgets, table widgets, and read-only infolists. Includes partial rendering, custom data sources, multi-dashboard support. USE WHEN creating dashboards, stats displays, charts, read-only data views, or organizing widgets/infolists in Filament.
+- Lời gọi kích hoạt:
+  - "widget"
+  - "widgets"
+  - "dashboard"
+  - "stats widget"
+  - "chart widget"
+  - "table widget"
+  - "infolist"
+  - "infolists"
+  - "stats overview"
+  - "dashboard widget"
+  - "multi-dashboard"
+  - "read-only display"
+  - "data display"
+  - "chart"
+  - "biểu đồ"
+  - "thống kê"
+  - "dashboard Filament"
 
 ## Skill auth-implementation-patterns:
 - Đường dẫn: \.claude\skills\auth\auth-implementation-patterns

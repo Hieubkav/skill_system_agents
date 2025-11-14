@@ -6,7 +6,7 @@
 1. Scan this index for matching keywords/triggers
 2. Load full skill details from: `.claude/hook/choose_skill.md/skills/{domain}/{skill-name}.md`
 
-**Stats**: 60 skills across 19 domains
+**Stats**: 61 skills across 19 domains
 
 ---
 
@@ -194,7 +194,7 @@ Use when design is complete and you need detailed implementation tasks for engin
 🔍 "writing plans", "implementation plan", "kế hoạch triển khai"  
 📂 `\.claude\skills\documents\writing-plans`
 
-### FILAMENT (3 skills)
+### FILAMENT (4 skills)
 
 **filament-form-debugger**  
 Diagnose and fix common Filament 4.x form errors - namespace issues (Tabs/Grid/Get), type mismatch, trait errors  
@@ -202,9 +202,14 @@ Diagnose and fix common Filament 4.x form errors - namespace issues (Tabs/Grid/G
 📂 `\.claude\skills\filament\filament-form-debugger`
 
 **image-management**  
-Centralized polymorphic image management with CheckboxList picker, WebP auto-conversion, order management (order=0 for cover), soft deletes  
+Centralized polymorphic image management with CheckboxList picker, WebP auto-conversion, order management (order=0 for cover), soft deletes, bulk o...  
 🔍 "image management", "quản lý ảnh", "image gallery"  
 📂 `\.claude\skills\filament\image-management`
+
+**filament-widgets-infolists**  
+Master Filament 4.x Widgets and Infolists - create dynamic dashboards, stats widgets, chart widgets, table widgets, and read-only infolists  
+🔍 "widget", "widgets", "dashboard"  
+📂 `\.claude\skills\filament\filament-widgets-infolists`
 
 **filament-resource-generator**  
 Automated Filament 4.x resource generation following coding standards (Schema namespace, Vietnamese labels, Observer patterns, ImagesRelationManager)  
