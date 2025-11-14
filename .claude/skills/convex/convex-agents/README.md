@@ -1,0 +1,1 @@
+Xử lý Convex Agents functionality: AI agents setup, context management, messages, human-in-the-loop workflows, file processing, RAG, streaming, debugging, tools, rate limiting, usage tracking, playground testing, thread management, agent orchestration. Dùng khi xây dựng AI chat agents, automation workflows, AI-powered applications.
