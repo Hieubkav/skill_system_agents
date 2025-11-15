@@ -2,3 +2,8 @@
 dùng skill E:\Laravel\study\skill_system\.claude\skills\meta\create-skill để xem 
 E:\Laravel\study\skill_system\.claude\skills\ có đạt chuẩn chưa 
 => ( đọc toàn bộ file của các thư mục này để hiểu)
+
+- Prompt kiểm tra skill :
+dùng skill E:\Laravel\study\skill_system\.claude\skills\meta\create-skill để xem 
+E:\Laravel\study\skill_system\.claude\skills\backend\fastapi-templates có đạt chuẩn chưa 
+=> ( đọc toàn bộ file của các thư mục này để hiểu)
